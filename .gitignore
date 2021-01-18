@@ -11,3 +11,4 @@ CTestTestfile.cmake
 _deps
 [Oo]ut
 [Bb]uild
+include/SMLib/Version.h
