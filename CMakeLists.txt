@@ -14,4 +14,4 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/config.cmake)
 set(PROJECT_ROOT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
         
 configure_file( ${PROJECT_SOURCE_DIR}/cmake/Version.h.in
-                ${PROJECT_ROOT_INCLUDE_DIR}/${PROJECT_NAME}/Version.h)
+                ${PROJECT_ROOT_INCLUDE_DIR}/${PROJECT_NAME}/System/Version.h)
