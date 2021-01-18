@@ -25,9 +25,8 @@
 
             // Linux
             #define SML_LINUX_SYSTEM
-            #error Linux operationg system don't supported by the Simple Game Engine
 
-        #elif defined(__ADROID__)
+        #elif defined(__ANDROID__)
             // Android
             #define SML_ANDROID_SYSTEM
             #error Android operating system don't supported by the Simple Game Engine
