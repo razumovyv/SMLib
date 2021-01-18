@@ -17,18 +17,28 @@
 #if !defined(SML_STATIC)
     #if defined(SML_WINDOWS_SYSTEM)
 
-        #define SM_API_EXPORT __declspec(dllexport)
-        #define SM_API_IMPORT __declspec(dllimport)
+        #define SML_API_EXPORT __declspec(dllexport)
+        #define SML_API_IMPORT __declspec(dllimport)
         
         #ifdef _MSC_VER
             #pragma warning(disable : 4251)
         #endif
+    #elif defined(__unix__)
+
+        #if __GNUC__ >= 4
+            #define SML_API_EXPORT __attribute__ ((__visibility__ ("default")))
+            #define SML_API_IMPORT __attribute__ ((__visibility__ ("default")))
+        #else
+                #define SML_API_EXPORT
+                #define SML_API_IMPORT
+        #endif
+
     #else
         #error Your operating system don't supported SMLib
     #endif
 #else
-    #define SM_API_EXPORT
-    #define SM_API_IMPORT
+    #define SML_API_EXPORT
+    #define SML_API_IMPORT
 #endif
 #include <cstdint>
 namespace sml
