@@ -9,4 +9,4 @@ The crossplatform Simple Media Library
   #### 5. Network
   #### 6. Entry points
   #### 7. Window
-  #### 8. Monitor
+  #### 8. Vide mode
