@@ -1,6 +1,6 @@
 # Detect th operating system
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
-    set(SGE_OS_WINDOWS 1)
+    set(SML_WINDOWS_SYSTEM 1)
 else()
     return()
 endif()
