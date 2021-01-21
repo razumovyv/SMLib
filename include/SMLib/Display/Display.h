@@ -25,6 +25,11 @@ namespace sml
                 Display();
 
                 //-------------------------------------------------------------
+                // Custom constructor
+                //-------------------------------------------------------------
+                Display(uint32_t index, const char* diaplyName, const char* displayDescription);
+
+                //-------------------------------------------------------------
                 // Destructor
                 //-------------------------------------------------------------
                 virtual ~Display();
@@ -42,7 +47,7 @@ namespace sml
                 
 
             private:
-                std::vector<DispalayMode> _modesList;
+                std::vector<DispalayMode> m_modesList;
                 uint32_t        m_Index;
                 std::string     m_Name;
                 std::string     m_Description;
