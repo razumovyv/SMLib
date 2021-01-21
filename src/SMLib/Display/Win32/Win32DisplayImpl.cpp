@@ -15,6 +15,11 @@ namespace sml{
             ZeroMemory(displayInfo&, sizeof(displayInfo));
             
             displayInfo.cb = sizeof(displayInfo);
+
+            for(int i = 0; EnumDisplayDevices(NULL, i, displayInfo, 0), i++)
+            {
+                displayList.push_back(display::Display(i, &displayInfo.DeviceName, &displayInfo.DeviceString))
+            }
             
             
             return displayList;
