@@ -28,7 +28,17 @@ namespace sml
                 // Desctructor
                 //-------------------------------------------------------------
                 ~Display();
-            protected:
+            
+            public:
+                //-------------------------------------------------------------
+                // Get the supported modes list for current display
+                //-------------------------------------------------------------
+                std::vecotr<DisplayMode> GetDispalyModesList();
+            
+                //-------------------------------------------------------------
+                // Get the display list
+                //-------------------------------------------------------------
+                std::vector<Display> GetDisplayList();
                 
 
             private:
