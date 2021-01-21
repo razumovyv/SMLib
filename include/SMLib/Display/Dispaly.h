@@ -38,7 +38,7 @@ namespace sml
                 //-------------------------------------------------------------
                 // Get the display list
                 //-------------------------------------------------------------
-                std::vector<Display> GetDisplayList();
+                static std::vector<Display> GetDisplayList();
                 
 
             private:
