@@ -5,8 +5,8 @@
 //------------------------------------------------------------------
 #include <SMLib/Display/Display.h>
 
-namspace sml{
-    namspace display{
+namespace sml{
+    namespace display{
         //--------------------------------------------------------------
         // Default constructor
         //--------------------------------------------------------------
@@ -16,11 +16,14 @@ namspace sml{
         //--------------------------------------------------------------
         // Custom constructor
         //---------------------------------------------------------------
-        Display::Display(uint32_t index, const char* diaplyName, 
-                                          const char* displayDescription) :
-                          m_Index(index),
-                          m_Name(displayName),
-                          m_Description(displayDescription)
+        Display::Display(uint32_t index, 
+                         const char* diaplyName,                 
+                         const char* displayDescription,
+                         bool primary) : 
+                            m_Index(index), 
+                            m_Name(displayName),
+                            m_Description(displayDescription),
+                            m_isPrimary(primary)
         {
 
         }
@@ -36,7 +39,7 @@ namspace sml{
         }
         
         std::vector<Display> Display::GetDisplayList(){
-        
+            return cls::DisplayImpl::GetDisplayDeviceList();
         } 
       
     } // namespace display
