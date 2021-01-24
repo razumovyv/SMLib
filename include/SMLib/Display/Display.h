@@ -27,7 +27,10 @@ namespace sml
                 //-------------------------------------------------------------
                 // Custom constructor
                 //-------------------------------------------------------------
-                Display(uint32_t index, const char* diaplyName, const char* displayDescription);
+                Display(uint32_t index, 
+                        const char* diaplyName, 
+                        const char* displayDescription, 
+                        bool isPrimary);
 
                 //-------------------------------------------------------------
                 // Destructor

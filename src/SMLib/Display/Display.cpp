@@ -39,7 +39,9 @@ namespace sml{
         }
         
         std::vector<Display> Display::GetDisplayList(){
-            return cls::DisplayImpl::GetDisplayDeviceList();
+
+            return cls::DisplayImpl::GetDisplayListFromSystem();
+            
         } 
       
     } // namespace display
