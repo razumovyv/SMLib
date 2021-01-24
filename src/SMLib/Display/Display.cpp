@@ -19,11 +19,11 @@ namespace sml{
         Display::Display(uint32_t index, 
                          const char* diaplyName,                 
                          const char* displayDescription,
-                         bool primary) : 
+                         bool isPrimary) : 
                             m_Index(index), 
                             m_Name(displayName),
                             m_Description(displayDescription),
-                            m_isPrimary(primary)
+                            m_isPrimary(isPrimary)
         {
 
         }
@@ -33,10 +33,10 @@ namespace sml{
         //--------------------------------------------------------------
         Display::~Display(){
         }
-        
-        std::vecotr<DisplayMode> Display::GetDisplayModesList(){
+        /*
+        std::vector<DisplayMode> Display::GetDisplayModesList(){
           return m_modesList;
-        }
+        }*/
         
         std::vector<Display> Display::GetDisplayList(){
 
