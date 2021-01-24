@@ -1,32 +1,26 @@
 //--------------------- File DisplayImpl.h -----------------------------
 #ifndef SML_DISPLAY_IMPLEMENTATION_H_
 #define SML_DISPLAY_IMPLEMENTATION_H_
-namespace sml{
-    namespace cls{
-            class DisplayImpl{
-                public:
-                    //--------------------------------------------------
-                    // Default constructor
-                    //--------------------------------------------------
-                    DisplayImpl();
-                    //--------------------------------------------------
-                    // Distructor
-                    //--------------------------------------------------
-                    virtual ~DisplayImpl();
 
-                    //--------------------------------------------------
-                    // Disable the cope constructor
-                    //--------------------------------------------------
-                    DisplayImpl(const Display&) = delete;
+#include <vector>
+#include <SMLib/Display/Display.h>
+namespace sml{ namespace cls{
+    class DisplayImpl{
 
-                    //--------------------------------------------------
-                    // Disable th assigment operator
-                    //--------------------------------------------------
-                    DisplayImpl& operator=(const DisplayImpl&) = delete;
+        public:
+            //--------------------------------------------------
+            // Default constructor
+            //--------------------------------------------------
+            DisplayImpl();
+            //--------------------------------------------------
+            // Distructor
+            //--------------------------------------------------
+            virtual ~DisplayImpl();
                     
-
-            };
-    } // namespace cls
-} // namespace sml
+             //----------------------------------------------
+            static std::vector<display::Dispaly> GetDisplayListFromSystem();
+            
+    };
+} /* namespace cls*/ } // namespace sml
 #endif
 //------------------ End of file DisplayImpl.h -------------------------
