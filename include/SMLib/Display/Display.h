@@ -41,7 +41,7 @@ namespace sml
                 //-------------------------------------------------------------
                 // Get the supported modes list for current display
                 //-------------------------------------------------------------
-                std::vecotr<DisplayMode> GetDisplayModesList();
+                //std::vecotr<DisplayMode> GetDisplayModesList();
             
                 //-------------------------------------------------------------
                 // Get the display list
@@ -50,7 +50,7 @@ namespace sml
                 
 
             private:
-                std::vector<DispalayMode> m_modesList;
+                //std::vector<DispalayMode> m_modesList;
                 uint32_t        m_Index;
                 std::string     m_Name;
                 std::string     m_Description;
