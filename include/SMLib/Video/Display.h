@@ -47,14 +47,14 @@ namespace sml
                 // Get the display list
                 //-------------------------------------------------------------
                 static std::vector<Display> GetDisplayList();
-                
 
+                
             private:
                 //std::vector<DispalayMode> m_modesList;
-                uint32_t        m_Index;
-                std::string     m_Name;
-                std::string     m_Description;
-                bool            m_isPrimary;
+                uint32_t        m_Index;        
+                std::string     m_Name;         
+                std::string     m_Description;  
+                bool            m_isPrimary;    
 
         }; // class SML_API Display
 
