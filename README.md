@@ -1,12 +1,11 @@
-# SMLib
-The crossplatform Simple Media Library
+# SMLib - Simple Media Library
+Simple traning project.
 
-### Modules:
-  #### 1. System
-  #### 2. Graphics
-  #### 3. Input
-  #### 4. Audio
-  #### 5. Network
-  #### 6. Entry points
-  #### 7. Window
-  #### 8. Monitor
+##Planned modules:
+  1. System module,
+  2. Video module,
+  3. Audio module,
+  4. Graphics module,
+  5. Network module,
+
+In progress.....
