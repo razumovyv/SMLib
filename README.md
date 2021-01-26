@@ -1,7 +1,7 @@
 # SMLib - Simple Media Library
 Simple traning project.
 
-##Planned modules:
+## Planned modules:
   - [ ] System module,
   - [ ] Video module,
   - [ ] Audio module,
