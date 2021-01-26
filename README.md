@@ -2,10 +2,10 @@
 Simple traning project.
 
 ##Planned modules:
-  1. System module,
-  2. Video module,
-  3. Audio module,
-  4. Graphics module,
-  5. Network module,
+  - [ ] System module,
+  - [ ] Video module,
+  - [ ] Audio module,
+  - [ ] Graphics module,
+  - [ ] Network module.
 
-In progress.....
+In process.....
