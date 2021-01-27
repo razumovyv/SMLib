@@ -1,4 +1,4 @@
-//----------------------------- File Dispaly.h --------------------------------
+//----------------------------- File Display.h --------------------------------
 #ifndef SML_SYSTEM_DISPLAY_H_
 #define SML_SYSTEM_DISPLAY_H_
 
@@ -7,18 +7,51 @@
 //-----------------------------------------------------------------------------
 #include <string>
 #include <vector>
+#include <memory>
+#include <map>
 #include <SMLib/config.h>
+//#include <SMLib/Video/DisplayMode.h>
 
 
 namespace sml
 {
-    namespace display
+    namespace video
     {
-        class DispalayMode;
-
         class SML_API Display
         {
             public:
+                //-------------------------------------------------------------
+                // Destructor
+                //-------------------------------------------------------------
+                virtual ~Display();
+
+                friend class DisplayImpl;
+            
+            
+            public:
+                //-------------------------------------------------------------
+                // Get the supported modes list for current display
+                //-------------------------------------------------------------
+                std::vecotr<DisplayMode> 
+                GetDisplayModes(std::string displayName) const;
+            
+                //-------------------------------------------------------------
+                // Get the display list from system
+                //-------------------------------------------------------------
+                static std::vector<Display*> GetDisplays() const;
+
+                //-------------------------------------------------------------
+                // Returning the number of active displays
+                //-------------------------------------------------------------
+                uint32_t GetNumOfDisplays() const;
+
+                //-------------------------------------------------------------
+                // Returning current mode of display
+                //-------------------------------------------------------------
+                DisplayMode GetCurrentMode(std::string displayName) const;
+
+            protected:
+
                 //-------------------------------------------------------------
                 // Deafult constructor
                 //-------------------------------------------------------------
@@ -31,30 +64,29 @@ namespace sml
                         const char* diaplyName, 
                         const char* displayDescription, 
                         bool isPrimary);
-
-                //-------------------------------------------------------------
-                // Destructor
-                //-------------------------------------------------------------
-                virtual ~Display();
-            
-            public:
-                //-------------------------------------------------------------
-                // Get the supported modes list for current display
-                //-------------------------------------------------------------
-                //std::vecotr<DisplayMode> GetDisplayModesList();
-            
-                //-------------------------------------------------------------
-                // Get the display list
-                //-------------------------------------------------------------
-                static std::vector<Display> GetDisplayList();
-
                 
+                //-------------------------------------------------------------
+                // Disable a copy constructor
+                //-------------------------------------------------------------
+                Display(const Display&) = delete;
+
+                //-------------------------------------------------------------
+                // Disable a assigment operator
+                //-------------------------------------------------------------
+                Display& operator=(const Display&) = delete;
+
             private:
-                //std::vector<DispalayMode> m_modesList;
-                uint32_t        m_Index;        
-                std::string     m_Name;         
-                std::string     m_Description;  
-                bool            m_isPrimary;    
+                //-------------------------------------------------------------
+                // Container for exempls of class
+                //-------------------------------------------------------------
+                static std::map<std::string, Display*> m_displayMap;
+
+                uint32_t        m_SystemIndex;        
+                std::string     m_SystemName;         
+                std::string     m_AdapterDescription;
+                std::string     m_MonitorDescription;
+
+                std::vector<DisplayMode> m_modesList;   
 
         }; // class SML_API Display
 
