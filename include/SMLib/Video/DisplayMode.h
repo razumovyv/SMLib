@@ -1,4 +1,4 @@
-//--------------------------- File DispalyMode.h ------------------------------
+//--------------------------- File DisplayMode.h ------------------------------
 #ifndef SML_DISPLAY_MODE_H_
 #define SML_DISPLAY_MODE_H_
 
@@ -10,7 +10,7 @@
 
 namespace sml
 {
-    namespace display
+    namespace video
     {
         class SML_API DisplayMode
         {
@@ -19,32 +19,29 @@ namespace sml
             // Default constructor
             // Initialize member dields to default values
             //
-            // m_width      : 640
-            // m_height     : 480
-            // m_bitPerPixel: 32
+            // m_width           : 640
+            // m_height          : 480
+            // m_bitPerPixel     : 32
+            // m_DisplayFrecancy : 60 Hz
             //-----------------------------------------------------------------
-            DispalyMode();
+            DisplayMode();
 
             //-----------------------------------------------------------------
             // Custom constructor with parameters
             //-----------------------------------------------------------------
             DisplayMode(uint32_t width, uint32_t height, 
-                                        uint32_t bitBerPixel = 32);
+                                        uint32_t bitPerPixel = 32, 
+                                        uint32_t frecency    = 60);
 
             //-----------------------------------------------------------------
             // Destructor
             //-----------------------------------------------------------------
-            ~DispalyMode();
-
-            //-----------------------------------------------------------------
-            // Return vector of supported dispaly modes
-            //-----------------------------------------------------------------
-            static std::vector<DisplayMode> GetDisplayModes();
+            ~DisplayMode();
 
             //-----------------------------------------------------------------
             // Get current setings for the primary display
             //-----------------------------------------------------------------
-            static DespalyMode GetCurrentDisplayMode();
+            static DisplayMode GetCurrentDisplayMode() const;
 
 
             private:
@@ -54,10 +51,10 @@ namespace sml
             uint32_t m_width;           // Displays(windows) width
             uint32_t m_height;          // Displays(windows) heigth
             uint32_t m_bitPerPixel;     // ColorDepth
-            uint32_t m_DispalyFrecency;
+            uint32_t m_DisplayFrecency;
 
         };
-    } // namespace dispaly
+    } // namespace display
 } // namspace sml
 #endif // !SML_DISPLAY_MODE_H_
-//------------------------ End of file DispalyMode.h --------------------------
+//------------------------ End of file DisplayMode.h --------------------------
