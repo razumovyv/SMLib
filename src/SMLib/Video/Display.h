@@ -17,7 +17,7 @@ namespace sml
 {
     namespace video
     {
-        class SML_API Display
+        class Display
         {
             public:
                 //-------------------------------------------------------------
@@ -32,23 +32,12 @@ namespace sml
                 //-------------------------------------------------------------
                 // Get the supported modes list for current display
                 //-------------------------------------------------------------
-                std::vecotr<DisplayMode> 
-                GetDisplayModes(std::string displayName) const;
-            
-                //-------------------------------------------------------------
-                // Get the display list from system
-                //-------------------------------------------------------------
-                static std::vector<Display*> GetDisplays() const;
-
-                //-------------------------------------------------------------
-                // Returning the number of active displays
-                //-------------------------------------------------------------
-                uint32_t GetNumOfDisplays() const;
+                std::vecotr<DisplayMode> GetDisplayModes() const;
 
                 //-------------------------------------------------------------
                 // Returning current mode of display
                 //-------------------------------------------------------------
-                DisplayMode GetCurrentMode(std::string displayName) const;
+                DisplayMode GetCurrentMode() const;
 
             protected:
 
@@ -76,13 +65,9 @@ namespace sml
                 Display& operator=(const Display&) = delete;
 
             private:
-                //-------------------------------------------------------------
-                // Container for exempls of class
-                //-------------------------------------------------------------
-                static std::map<std::string, Display*> m_displayMap;
 
-                uint32_t        m_SystemIndex;        
-                std::string     m_SystemName;         
+                uint32_t        m_Index;        
+                std::string     m_Name;         
                 std::string     m_AdapterDescription;
                 std::string     m_MonitorDescription;
 
