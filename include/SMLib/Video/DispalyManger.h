@@ -7,6 +7,7 @@
 // Headers
 //-----------------------------------------------------------------------------
 #include <SMLib/config.h>
+#include <map>
 
 namespace sml
 {  
@@ -29,6 +30,16 @@ namespace sml
                 // A fabric function
                 //-------------------------------------------------------------
                 static DisplayManager* GetInstance();
+                
+                //-------------------------------------------------------------
+                // Returning a number of an active displays in your system
+                //-------------------------------------------------------------
+                uint32_t GetNumberOfActiveDisplays() const;
+                
+                //-------------------------------------------------------------
+                // Returning a current video mode of primary display
+                //-------------------------------------------------------------
+                VideoMode GetPrimaryDisplayMode() const;
             
             protected:
                 //-------------------------------------------------------------
@@ -45,6 +56,14 @@ namespace sml
                 // Default destructor
                 //-------------------------------------------------------------
                 ~DisplayManager();
+            
+            private:
+                //-------------------------------------------------------------
+                // The number of an active displays in yours operating system
+                //-------------------------------------------------------------
+                uint32_t m_NumOfDisplays;
+                std::map<std::string, sml::video::Dispaly> m_DisplayList;
+                
 
         }; //  class DisplayManager
 
