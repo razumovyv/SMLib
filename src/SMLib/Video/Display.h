@@ -71,6 +71,7 @@ namespace sml { namespace video {
         
     }; // class SML_API Display
 
-} /* namespace display */ } // namespace sml
+} // namespace display
+} // namespace sml
 #endif // !SML_SYSTEM_DISPLAY_H_
 //-------------------------- End of file Dispaly.h ----------------------------

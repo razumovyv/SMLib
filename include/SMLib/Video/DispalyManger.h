@@ -9,7 +9,7 @@
 #include <SMLib/config.h>
 #include <map>
 
-namespace sml{  namespace video {
+namespace sml {  namespace video {
     class SML_API DispalyManager{
 
         public:
@@ -64,6 +64,7 @@ namespace sml{  namespace video {
                 
     }; //  class DisplayManager
 
-} /* namespace video */ } // namspace sml
+} // namespace video 
+} // namspace sml
 #endif // !SML_VIDEO_DISPLAY_MANAGER_H_
 //----------------------- End of file DisplayManger.h -------------------------
