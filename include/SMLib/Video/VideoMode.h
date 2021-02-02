@@ -1,18 +1,18 @@
-//--------------------------- File DisplayMode.h ------------------------------
-#ifndef SML_DISPLAY_MODE_H_
-#define SML_DISPLAY_MODE_H_
+//--------------------------- File VideoMode.h ------------------------------
+#ifndef SML_VIDEO_MODE_H_
+#define SML_VIDEO_MODE_H_
 
 //-----------------------------------------------------------------------------
 // Headers
 //-----------------------------------------------------------------------------
 #include <vector>
-#include <SMLib/config.h>
+#include <SMLib/Video/VideoExport.h>
 
 namespace sml
 {
     namespace video
     {
-        class SML_API VideoMode
+        class SML_VIDEO_API VideoMode
         {
             public:
             //-----------------------------------------------------------------
@@ -24,19 +24,19 @@ namespace sml
             // m_bitPerPixel     : 32
             // m_DisplayFrecancy : 60 Hz
             //-----------------------------------------------------------------
-            DisplayMode();
+            VideoMode();
 
             //-----------------------------------------------------------------
             // Custom constructor with parameters
             //-----------------------------------------------------------------
-            DisplayMode(uint32_t width, uint32_t height, 
+            VideoMode(uint32_t width, uint32_t height, 
                                         uint32_t bitPerPixel = 32, 
                                         uint32_t frecency    = 60);
 
             //-----------------------------------------------------------------
             // Destructor
             //-----------------------------------------------------------------
-            ~DisplayMode();
+            ~VideoMode();
 
             //-----------------------------------------------------------------
             // Returning "true" if the video mode was finded in a list 
@@ -49,13 +49,13 @@ namespace sml
             //-----------------------------------------------------------------
             // Member data
             //-----------------------------------------------------------------
-            uint32_t m_width;           // Displays(windows) width
-            uint32_t m_height;          // Displays(windows) heigth
-            uint32_t m_bitPerPixel;     // ColorDepth
+            uint32_t m_Width;           // Displays(windows) width
+            uint32_t m_Height;          // Displays(windows) heigth
+            uint32_t m_BitPerPixel;     // ColorDepth
             uint32_t m_DisplayFrecency;
 
         };
-    } // namespace display
+    } // namespace video
 } // namspace sml
-#endif // !SML_DISPLAY_MODE_H_
-//------------------------ End of file DisplayMode.h --------------------------
+#endif // !SML_VIDEO_MODE_H_
+//------------------------ End of file VideoMode.h --------------------------
