@@ -12,7 +12,7 @@ namespace sml
 {
     namespace video
     {
-        class SML_API DisplayMode
+        class SML_API VideoMode
         {
             public:
             //-----------------------------------------------------------------
@@ -39,11 +39,12 @@ namespace sml
             ~DisplayMode();
 
             //-----------------------------------------------------------------
-            // Get current setings for the primary display
+            // Returning "true" if the video mode was finded in a list 
+            // of supported modes.
             //-----------------------------------------------------------------
-            static DisplayMode GetCurrentDisplayMode() const;
+            bool isValid() const;
 
-
+            
             private:
             //-----------------------------------------------------------------
             // Member data
