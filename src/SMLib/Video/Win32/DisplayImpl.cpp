@@ -6,11 +6,12 @@
 
 namespace sml { namespace cls{
 
-    std::vector<dispaly::Display> DisplayImpl::GetDisplayListFromSystem(){
+    std::vector<video::Display> DisplayImpl::GetDisplayListFromSystem(){
             
-        std::vector<Display> loadedDisplayList;
+        std::vector<video::Display> loadedDisplayList;
 
-        DISPLAY_DEVICE displayInfo = {0};
+        DISPLAY_DEVICE displayInfo;
+        ZeroMemory(&displayInfo, sizeof(displayInfo));
         displayInfo.cb = sizeof(displayInfo);
 
         for(int index = 0; EnumDisplayDevices(NULL, index, &displayInfo, 0); index++)
