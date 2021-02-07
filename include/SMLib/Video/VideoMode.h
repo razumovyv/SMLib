@@ -29,9 +29,10 @@ namespace sml
             //-----------------------------------------------------------------
             // Custom constructor with parameters
             //-----------------------------------------------------------------
-            VideoMode(uint32_t width, uint32_t height, 
-                                        uint32_t bitPerPixel = 32, 
-                                        uint32_t frecency    = 60);
+            VideoMode(uint32_t width 
+                    , uint32_t height 
+                    , uint32_t bitPerPixel = 32 
+                    , uint32_t frecency    = 60);
 
             //-----------------------------------------------------------------
             // Destructor
@@ -42,7 +43,7 @@ namespace sml
             // Returning "true" if the video mode was finded in a list 
             // of supported modes.
             //-----------------------------------------------------------------
-            bool isValid() const;
+             bool isValid() const;
 
             
             private:

@@ -11,11 +11,11 @@ namespace sml{ namespace cls{
             //-----------------------------------------------------------------
             // Default constructor
             //-----------------------------------------------------------------
-            DisplayImpl();
+            DisplayImpl() {};
             //-----------------------------------------------------------------
             // Distructor
             //-----------------------------------------------------------------
-            virtual ~DisplayImpl();
+            virtual ~DisplayImpl() {};
                     
              //----------------------------------------------------------------
              // Returning a vector of active displays
@@ -25,8 +25,8 @@ namespace sml{ namespace cls{
             //-----------------------------------------------------------------
             // Returning a vector of supported modes for display
             //-----------------------------------------------------------------
-            static std::vector<video::VideoMode> 
-            GetDisplayModes(const std::string& displayName);
+           // static std::vector<video::VideoMode> 
+           // GetDisplayModes(const std::string& displayName);
             
     };
 } /* namespace cls*/ } // namespace sml
