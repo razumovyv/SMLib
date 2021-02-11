@@ -21,9 +21,25 @@ namespace sml
     namespace video
     {
         
-        class SML_VIDEO_API Display : system::NoneCopyable
+        class SML_VIDEO_API Display
         {   
             public:
+                //-------------------------------------------------------------
+                // A default constructor
+                //-------------------------------------------------------------
+                Display( );
+
+                Display(uint32_t index
+                      , const char* displayName
+                      , const char* adapterDesc
+                      , const char* monitorDesc
+                      , const bool isPrimary);
+
+                //-------------------------------------------------------------
+                // A destructor
+                //-------------------------------------------------------------
+                ~Display( );
+
                 //-------------------------------------------------------------
                 // Get a vector of active displayInstance with atached monitors
                 //-------------------------------------------------------------
@@ -51,25 +67,9 @@ namespace sml
                 bool IsValidMode(const VideoMode& mode) const;
 
                 //-------------------------------------------------------------
-                // A destructor
+                // Returning "true" if display is priamry
                 //-------------------------------------------------------------
-                ~Display( );
-            
-            protected:
-                //-------------------------------------------------------------
-                // Base class for work with video displays
-                //-------------------------------------------------------------
-                friend class DisplayImpl;
-
-                //-------------------------------------------------------------
-                // A default constructor
-                //-------------------------------------------------------------
-                Display( );
-
-                Display( uint32_t index, 
-                         const char* displayName, 
-                         const char* adapterDesc,
-                         const char* monitorDesc);
+                bool IsPrimary() const;
  
             private:
                 //-------------------------------------------------------------
@@ -79,6 +79,7 @@ namespace sml
                 std::string name_;  
                 std::string adapterDesc_;
                 std::string monitorDesc_;
+                bool        isPrimary_;
         };
     } // namspace video
 } // namspace sml
