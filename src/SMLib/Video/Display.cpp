@@ -12,10 +12,11 @@ namespace sml
         // Default constructor
         //---------------------------------------------------------------------
         Display::Display()
-            : index_       ( 0 )
-            , name_        ( "none" )
-            , adapterDesc_ ( "none" )
-            , monitorDesc_ ( "none" )
+            : index_        ( 0 )
+            , name_         ( "none" )
+            , adapterDesc_  ( "none" )
+            , monitorDesc_  ( "none" )
+            , isPrimary_    ( false )
         { 
         }
 
@@ -25,11 +26,13 @@ namespace sml
         Display::Display( uint32_t index 
                         , const char* displayName 
                         , const char* adapterDesc
-                        , const char* monitorDesc) 
+                        , const char* monitorDesc
+                        , const bool isPrimary) 
                         : index_        ( index )
                         , name_         ( displayName )
                         , adapterDesc_  ( adapterDesc )
                         , monitorDesc_  ( monitorDesc )
+                        , isPrimary_    ( isPrimary )
         {
 
         }
@@ -70,7 +73,8 @@ namespace sml
         {
             if(!IsValidMode(mode)) return false;
             
-            return true;
+
+            return cls::DisplayImpl::SetVideoMode(this->name_.c_str(), mode, flags);
         }
 
         //-------------------------------------------------------------
@@ -79,6 +83,11 @@ namespace sml
         bool Display::IsValidMode(const VideoMode& mode) const
         {
             return cls::DisplayImpl::SetVideoMode(this->name_.c_str(), mode, SML_VM_TEST);
+        }
+
+        bool Display::IsPrimary() const
+        {
+            return isPrimary_;
         }
     }
 }
