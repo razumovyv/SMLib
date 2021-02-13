@@ -2,8 +2,6 @@
 #ifndef SML_VIDEO_TYPES_H_
 #define SML_VIDEO_TYPES_H_
 
-#include <SMLib/Video/VideoExport.h>
-
 //-----------------------------------------------------------------------------
 // Flags for SetVideoMode
 //-----------------------------------------------------------------------------
