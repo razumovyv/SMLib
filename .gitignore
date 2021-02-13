@@ -8,7 +8,9 @@ cmake_install.cmake
 install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
+CMakeSettings.json
+.vscode
+.vs
 _deps
 [Oo]ut
 [Bb]uild
-include/SMLib/System/Version.h
