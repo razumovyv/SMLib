@@ -3,7 +3,7 @@
 #ifndef SML_NONECOPYABLE_H_
 #define SML_NONECOPYABLE_H_
 
-#include <SMLib/System/SystemExport.h>
+#include <SMLib/System/Export.h>
 
 namespace sml 
 {
@@ -11,10 +11,10 @@ namespace sml
     {
         class SML_SYSTEM_API NoneCopyable
         {
+            
             protected:
                 NoneCopyable() {}
-
-                ~NoneCopyable() {}
+                virtual ~NoneCopyable() = default;
             private:
                 NoneCopyable(const NoneCopyable&);
                 NoneCopyable& operator=(const NoneCopyable&)
