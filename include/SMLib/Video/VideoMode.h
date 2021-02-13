@@ -5,8 +5,7 @@
 //-----------------------------------------------------------------------------
 // Headers
 //-----------------------------------------------------------------------------
-#include <vector>
-#include <SMLib/Video/VideoExport.h>
+#include <SMLib/Video/Export.h>
 
 namespace sml
 {
