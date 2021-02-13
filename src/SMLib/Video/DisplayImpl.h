@@ -19,11 +19,6 @@ namespace sml {
                 // Destructor
                 //-------------------------------------------------------------
                  ~DisplayImpl( ) {};
-
-                //-------------------------------------------------------------
-                // Get an active display by index
-                //-------------------------------------------------------------
-                static Display GetActiveDisplay(uint32_t index);    
                 
                 //-------------------------------------------------------------
                 // Returning a vector of active displays atached of desktops
