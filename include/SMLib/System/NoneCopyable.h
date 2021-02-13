@@ -16,8 +16,8 @@ namespace sml
                 NoneCopyable() {}
                 virtual ~NoneCopyable() = default;
             private:
-                NoneCopyable(const NoneCopyable&);
-                NoneCopyable& operator=(const NoneCopyable&);
+                NoneCopyable(const NoneCopyable&) = delete;
+                NoneCopyable& operator=(const NoneCopyable&) = delete;
         };
     } // namespace system
 } // namespace sml
