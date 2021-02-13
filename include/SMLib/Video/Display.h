@@ -13,13 +13,12 @@
 #include <SMLib/Video/Flags.h>
 
 
-namespace sml
-{
-    namespace video
-    {
+namespace sml {
+
+    namespace video {
         
-        class SML_VIDEO_API Display
-        {   
+        class SML_VIDEO_API Display {
+
             public:
                 //-------------------------------------------------------------
                 // A default constructor

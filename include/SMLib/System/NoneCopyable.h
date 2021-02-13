@@ -5,12 +5,11 @@
 
 #include <SMLib/System/Export.h>
 
-namespace sml 
-{
-    namespace system
-    {
-        class SML_SYSTEM_API NoneCopyable
-        {
+namespace sml {
+
+    namespace system {
+
+        class SML_SYSTEM_API NoneCopyable {
             
             protected:
                 NoneCopyable() {}

@@ -7,12 +7,12 @@
 //-----------------------------------------------------------------------------
 #include <SMLib/Video/Export.h>
 
-namespace sml
-{
-    namespace video
-    {
-        struct SML_VIDEO_API VideoMode
-        {
+namespace sml {
+
+    namespace video {
+
+        struct SML_VIDEO_API VideoMode {
+
                 //-----------------------------------------------------------------
                 // Default constructor
                 // Initialize member dields to default values
@@ -40,7 +40,7 @@ namespace sml
                 uint32_t bitPerPixel;     
                 uint32_t displayFrecency;
 
-        };
+        }; // struct VideoMOde
     } // namespace video
 } // namspace sml
 #endif // !SML_VIDEO_MODE_H_

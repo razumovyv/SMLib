@@ -6,7 +6,9 @@
 #include <SMLib/Video/Display.h>
 #include <SMLib/Video/VideoMode.h>
 namespace sml { 
+
     namespace cls {
+
         class DisplayImpl{
 
             public:

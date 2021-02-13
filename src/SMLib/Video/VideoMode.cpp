@@ -5,10 +5,10 @@
 //-----------------------------------------------------------------------------
 #include <SMLib/Video/VideoMode.h>
 
-namespace sml
-{
-    namespace video
-    {
+namespace sml {
+
+    namespace video {
+
         //---------------------------------------------------------------------
         // Default constructor
         //---------------------------------------------------------------------
@@ -16,10 +16,7 @@ namespace sml
                     : m_Width           ( 640 ) 
                     , m_Height          ( 480 ) 
                     , m_BitPerPixel     ( 32 )
-                    , m_DisplayFrecency ( 60 )
-        {
-
-        }
+                    , m_DisplayFrecency ( 60 ) { }
 
         //---------------------------------------------------------------------
         // Custom constructor
@@ -31,10 +28,7 @@ namespace sml
                             : width           ( width ) 
                             , height          ( height ) 
                             , bitPerPixel     ( bitPerPixel )
-                            , displayFrecency ( frecancy )
-        {
-
-        }
+                            , displayFrecency ( frecancy ) { }
 
     } // namespace video
 } // namspace sml
