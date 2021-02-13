@@ -5,12 +5,12 @@
 //-----------------------------------------------------------------------------
 // Project version
 //-----------------------------------------------------------------------------
-#include <SMLib/System/Version.h>
+#include <SMLib/Version.h>
 
 //-----------------------------------------------------------------------------
 // Platform detection
 //-----------------------------------------------------------------------------
-#include <SMLib/System/PlatformDetection.h>
+#include <SMLib/PlatformDetection.h>
 
 //-----------------------------------------------------------------------------
 // Config API import/export
@@ -40,20 +40,29 @@
     #define SML_API_EXPORT
     #define SML_API_IMPORT
 #endif
+
+//-----------------------------------------------------------------------------
+// Using types
+//-----------------------------------------------------------------------------
 #include <cstdint>
+#include <string>
+
 namespace sml
 {
     // Signed types
-    using int8_t  = std::int8_t;
-    using int16_t = std::int16_t;
-    using int32_t = std::int32_t;
-    using int64_t = std::int64_t;
+    using int8_t    = std::int8_t;
+    using int16_t   = std::int16_t;
+    using int32_t   = std::int32_t;
+    using int64_t   = std::int64_t;
 
     // Unsigned types
-    using uint8_t = std::uint8_t;
-    using uint16_t = std::uint16_t;
-    using uint32_t = std::uint32_t;
-    using uint64_t = std::uint64_t;
+    using uint8_t   = std::uint8_t;
+    using uint16_t  = std::uint16_t;
+    using uint32_t  = std::uint32_t;
+    using uint64_t  = std::uint64_t;
+
+    // STL types
+    using string    = std::string;
     
 }
 
