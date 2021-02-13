@@ -7,13 +7,10 @@
 //-----------------------------------------------------------------------------
 
 #include <vector>
-#include <map>
-#include <string>
 
-#include <SMLib/System/NoneCopyable.h>
-#include <SMLib/Video/VideoExport.h>
+#include <SMLib/Video/Export.h>
 #include <SMLib/Video/VideoMode.h>
-#include <SMLib/Video/Types.h>
+#include <SMLib/Video/Flags.h>
 
 
 namespace sml
@@ -76,9 +73,9 @@ namespace sml
                 // Member fields
                 //-------------------------------------------------------------
                 uint32_t    index_;        
-                std::string name_;  
-                std::string adapterDesc_;
-                std::string monitorDesc_;
+                string      name_;  
+                string      adapterDesc_;
+                string      monitorDesc_;
                 bool        isPrimary_;
         };
     } // namspace video
