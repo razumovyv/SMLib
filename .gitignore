@@ -14,4 +14,3 @@ CMakeSettings.json
 _deps
 [Oo]ut
 [Bb]uild
-include/SMLib/System/Version.h
