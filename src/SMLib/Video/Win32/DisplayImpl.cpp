@@ -1,104 +1,115 @@
 //---------------------- File DisplayImpl.cpp----------------------------------
 
 #include <windows.h>
-#include <vector>
 #include "..\DisplayImpl.h"
 
 
-namespace sml { namespace cls{
+namespace sml { namespace video { namespace cls{
 
     //-------------------------------------------------------------------------
     // Returning a vector of active displays atached of desktops
     //-------------------------------------------------------------------------
-    std::vector<video::Display> DisplayImpl::GetActiveDesktopDisplays( ){
+    std::vector< Display > DisplayImpl::GetActiveDesktopDisplays( ){
 
         //---------------------------------------------------------------------
         // Creating a vector for display instances
         //---------------------------------------------------------------------
-        std::vector<video::Display> loadedDisplayList;
+        std::vector< Display > displayList;
 
-        DISPLAY_DEVICE displayInfo;
-        ZeroMemory(&displayInfo, sizeof(displayInfo));
-        displayInfo.cb = sizeof(displayInfo);
+        DISPLAY_DEVICE dispInfo; // Information about a display
+        DISPLAY_DEVICE monInfo;  // Information about a monitor
+        ZeroMemory( &dispInfo, sizeof( dispInfo ) );
+        dispInfo.cb = sizeof( dispInfo );
 
-        for(size_t displayCount = 0;
-            EnumDisplayDevices( NULL 
-                                , displayCount
-                                , &displayInfo
-                                , 0 );
-            displayCount++ ) {
+        for( size_t dispCount = 0; EnumDisplayDevices( NULL 
+                                                    , dispCount
+                                                    , &dispInfo
+                                                    , 0 ); dispCount++ ) 
+        {
 
-            if((displayInfo.StateFlags & DISPLAY_DEVICE_ATTACHED_TO_DESKTOP)
-              &(displayInfo.StateFlags & DISPLAY_DEVICE_ACTIVE)) 
+            if(( dispInfo.StateFlags & DISPLAY_DEVICE_ATTACHED_TO_DESKTOP )
+              &( dispInfo.StateFlags & DISPLAY_DEVICE_ACTIVE )) 
             {
 
-                DISPLAY_DEVICE monitorInfo;
-                ZeroMemory(&monitorInfo, sizeof(monitorInfo));
-                monitorInfo.cb = sizeof(monitorInfo);
+                ZeroMemory( &monInfo, sizeof( monInfo ) );
+                monInfo.cb = sizeof( monInfo );
 
-                for (size_t monitorCount = 0;
-                    EnumDisplayDevices(displayInfo.DeviceName
-                                        , monitorCount
-                                        , &monitorInfo
-                                        , 0);
-                    monitorCount++) {
+                for ( size_t monCount = 0;
+                    EnumDisplayDevices( dispInfo.DeviceName
+                                        , monCount
+                                        , &monInfo
+                                        , 0 ); monCount++ ) 
+                {
 
-                    video::Display 
-                        sml_display(monitorCount
-                                , (const char*)displayInfo.DeviceName
-                                , (const char*)displayInfo.DeviceString
-                                , (const char*)monitorInfo.DeviceString
-                                ,  (displayInfo.StateFlags 
-                                  & DISPLAY_DEVICE_PRIMARY_DEVICE) ? true 
-                                                                   : false;
+                    Display disp( ( const char* )dispInfo.DeviceName
+                                , ( const char* )dispInfo.DeviceString
+                                , ( const char* )monInfo.DeviceString
+                                , ( dispInfo.StateFlags 
+                                & DISPLAY_DEVICE_PRIMARY_DEVICE) ? true : false );
 
-                    if(std::find( loadedDisplayList.begin()
-                                , loadedDisplayList.end()
-                                , sml_display) == loadedDisplayList.end()) 
+                    if( std::find( displayList.begin( )
+                                , displayList.end( )
+                                , disp ) == displayList.end( ) ) 
                     {
 
-                        loadedDisplayList.push_back(sml_display);   
+                        displayList.push_back( disp );   
                     
                     }
                 }
             }
         }        
             
-        return  loadedDisplayList;
+        return  displayList;
     }
 
-    //-------------------------------------------------------------
-    // Get primary Display
-    //-------------------------------------------------------------
-    video::Display DisplayImpl::GetPrimaryDisplay() {
+    //-------------------------------------------------------------------------
+    // Returning a primary display instance
+    //-------------------------------------------------------------------------
+    Display DisplayImpl::GetPrimaryDisplay( ) {
 
-        std::vector<video::Display> displayList; 
-        displayList = DisplayImpl::GetActiveDesktopDisplays();
+        DISPLAY_DEVICE dispInfo; // Information about a display
+        DISPLAY_DEVICE monInfo;  // Information about a monitor
+        ZeroMemory( &dispInfo, sizeof( dispInfo ) );
+        dispInfo.cb = sizeof( dispInfo );
 
-        for(video::Display disp : displayList) {
+        for( size_t i; EnumDisplayDevices( NULL, i, &dispInfo, 0 ); i++ ) {
+            
+            if( dispInfo.StateFlags & DISPLAY_DEVICE_PRIMARY_DEVICE ) {
+                ZeroMemory( &monInfo, sizeof( monInfo ) );
+                monInfo.cb = sizeof( monInfo );
 
-            if(disp.IsPrimary()) return disp;
+                if( !EnumDisplayDevices( dispInfo.DeviceName, 0, &monInfo, 0))
+                {
+                    return Display();
+                }
+
+                return Display(( const char* )dispInfo.DeviceName
+                              ,( const char* )dispInfo.DeviceString
+                              ,( const char* )monInfo.DeviceString
+                              ,true );
+            }
         }
 
-        return displayList[0];
+        return Display();
+
     }
 
     //-------------------------------------------------------------
     // Returning a vector of supported modes for display
     //-------------------------------------------------------------
-    std::vector<video::VideoMode> 
-    DisplayImpl::GetDisplayModes(const char* displayName) {
+    std::vector< VideoMode > DisplayImpl::GetListVideoModes( const char* displayName ){
 
-        std::vector<video::VideoMode> modes;
+        std::vector<VideoMode> modes;
         modes.clear();
         DEVMODE modeData;
         ZeroMemory(&modeData, sizeof(modeData));
-        for (size_t i = 0; EnumDisplaySettings(displayName, i, &modeData); i++) {
+        for (size_t i = 0; EnumDisplaySettings(displayName, i, &modeData); i++)
+        {
 
-            video::VideoMode mode(modeData.dmPelsWidth
-                                , modeData.dmPelsHeight
-                                , modeData.dmBitsPerPel
-                                , modeData.dmDisplayFrequency);
+            VideoMode mode( modeData.dmPelsWidth
+                          , modeData.dmPelsHeight
+                          , modeData.dmBitsPerPel
+                          , modeData.dmDisplayFrequency );
             if (std::find(modes.begin(), modes.end(), mode) == modes.end())
             {
 
@@ -112,29 +123,28 @@ namespace sml { namespace cls{
     //------------------------------------------------------------
     // Returning a current desktop mode for selected display
     //------------------------------------------------------------
-    video::VideoMode
-    DisplayImpl::GetCurrentDesktopMode(const char* displayName) {
+    VideoMode DisplayImpl::GetVideoMode(const char* displayName) {
 
         DEVMODE modeData;
         ZeroMemory(&modeData, sizeof(modeData));
 
-        if(!EnumDisplaySettings((LPCSTR)displayName, ENUM_CURRENT_SETTINGS, &modeData))
+        if(!EnumDisplaySettings(displayName, ENUM_CURRENT_SETTINGS, &modeData))
         {
             //TODO: ERROR LOG
-            return {0};
+            return VideoMode(0,0,0,0);
         }
         
-        return video::VideoMode mode(modeData.dmPelsWidth
-                                    , modeData.dmPelsHeight
-                                    , modeData.dmBitsPerPel
-                                    , modeData.dmDisplayFrequency);
+        return VideoMode(modeData.dmPelsWidth
+                       , modeData.dmPelsHeight
+                       , modeData.dmBitsPerPel
+                       , modeData.dmDisplayFrequency);
     }
 
     //------------------------------------------------------------
     // Seting a video mode to a selected display
     //------------------------------------------------------------
     bool DisplayImpl::SetVideoMode(const char* displayName
-                                 , const video::VideoMode& mode
+                                 , const VideoMode& mode
                                  , uint32_t flags)
     {
        DEVMODE dispMode;
@@ -151,6 +161,8 @@ namespace sml { namespace cls{
 
     
             
-} /* namespace cls*/ } // namespace sml
+} // namespace cls
+} // namespace video
+} // namespace sml
 
 //------------------- End of file DisplayImpl.cpp -----------------------------
