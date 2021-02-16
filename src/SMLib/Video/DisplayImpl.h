@@ -1,13 +1,12 @@
 //--------------------- File DisplayImpl.h ------------------------------------
+#ifndef SML_DISPLAY_IMPLEMENTATION_H_
+#define SML_DISPLAY_IMPLEMENTATION_H_
 
 //-----------------------------------------------------------------------------
 //
 // TODO Documentation: main title for file
 //
 //-----------------------------------------------------------------------------
-
-#ifndef SML_DISPLAY_IMPLEMENTATION_H_
-#define SML_DISPLAY_IMPLEMENTATION_H_
 
 //-----------------------------------------------------------------------------
 // Headers
