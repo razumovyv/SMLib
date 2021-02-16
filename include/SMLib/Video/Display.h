@@ -3,32 +3,63 @@
 #define SML_DISPLAY_H_
 
 //-----------------------------------------------------------------------------
+//
+// TODO Documentation: main title for file
+//
+//-----------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------
 // Headers
 //-----------------------------------------------------------------------------
 #include <vector>
-
 #include <SMLib/Video/Export.h>
 #include <SMLib/Video/VideoMode.h>
 #include <SMLib/Video/Flags.h>
 
-
-namespace sml { namespace video {
+//-----------------------------------------------------------------------------
+// A main library namespace
+//-----------------------------------------------------------------------------
+namespace sml { 
+//-----------------------------------------------------------------------------
+// A opened video module namespace
+//-----------------------------------------------------------------------------
+namespace video {
         
     class SML_VIDEO_API Display {
 
         public:
-            //-------------------------------------------------------------
+
+            //-----------------------------------------------------------------
             // A default constructor
+            //
+            // Constructor creates an instance of a primary display
             //
             // TODO: Documentations
             //
-            //-------------------------------------------------------------
+            //-----------------------------------------------------------------
             Display( );
 
-            Display(  const char* displayName
-                    , const char* adapterDesc
-                    , const char* monitorDesc
-                    , const bool isPrimary);
+            //-----------------------------------------------------------------
+            // Constructor #1
+            //
+            // TODO: Documentations
+            //
+            //-----------------------------------------------------------------
+            Display( const char* name, 
+                     const char* adapterDescription, 
+                     const char* monitorDescription, 
+                     const bool  isPrimary );
+
+            //-----------------------------------------------------------------
+            //Constructor #2
+            //
+            // TODO: Documentations
+            //
+            //-----------------------------------------------------------------
+            Display( const string &name, 
+                     const string &adapterDescription, 
+                     const string &monitorDescription, 
+                     const bool   isPrimary );
 
             //-----------------------------------------------------------------
             // A destructor
@@ -60,8 +91,8 @@ namespace sml { namespace video {
             // TODO: Documentations
             //
             //-----------------------------------------------------------------
-            bool SetVideoMode( const VideoMode& mode
-                             , uint32_t flags = SML_VM_FULLSCREEN );
+            bool SetVideoMode( const VideoMode& videoMode, 
+                               uint32_t flags = SML_VM_FULLSCREEN );
 
             //-----------------------------------------------------------------
             // Checking a selected mode
@@ -69,7 +100,7 @@ namespace sml { namespace video {
             // TODO: Documentations
             //
             //-----------------------------------------------------------------
-            bool IsValidMode( const VideoMode& mode ) const;
+            bool IsValidMode( const VideoMode& videoMode ) const;
 
             //-----------------------------------------------------------------
             // Returning "true" if display is priamry
@@ -90,14 +121,15 @@ namespace sml { namespace video {
             //
             //-----------------------------------------------------------------
 
-            string      name_;  
-            string      adapterDesc_;
-            string      monitorDesc_;
-            bool        isPrimary_;
+            std::string      name_;  
+            std::string      adapterDescription_;
+            std::string      monitorDescription_;
+            bool             isPrimary_;
             
-            std::vector< VideoMode> listModes_;
+            std::vector< VideoMode> listVideoModes_;
+
     };
 } // namspace video
 } // namspace sml
 #endif // !SML_DISPLAY_H_
-//---------------------- End of file Display.h --------------------------------
+//---------------------- End of file Display.h --------------------------------ц
