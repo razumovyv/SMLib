@@ -10,11 +10,13 @@ namespace sml {  namespace video {
     // TODO: Documentations
     //
     //---------------------------------------------------------------------
-    Display::Display(){ 
-
-        cls::DisplayImpl::GetDisplayDesktop( 0, this );
-        listVideoModes_ = cls::DisplayImpl::GetListVideoModes( name_.c_str( ) );
-   
+    Display::Display() : 
+    name_("none"),
+    adapterDescription_("none"),
+    monitorDescription_("none"),
+    isPrimary_(false)
+    { 
+        listVideoModes_.clear();
     }
 
     //---------------------------------------------------------------------

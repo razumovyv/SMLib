@@ -32,8 +32,6 @@ namespace video {
             //-----------------------------------------------------------------
             // A default constructor
             //
-            // Constructor creates an instance of a primary display
-            //
             // TODO: Documentations
             //
             //-----------------------------------------------------------------
@@ -60,6 +58,7 @@ namespace video {
                      const string &adapterDescription, 
                      const string &monitorDescription, 
                      const bool   isPrimary );
+            
 
             //-----------------------------------------------------------------
             // A destructor
