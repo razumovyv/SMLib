@@ -4,7 +4,7 @@
 //-----------------------------------------------------------------------------
 // Main configure file
 //-----------------------------------------------------------------------------
-#include <SMLib/config.h>
+#include <SMLib/Config.h>
 
 #if defined(SML_VIDEO_EXPORT)
     #define SML_VIDEO_API SML_API_EXPORT
