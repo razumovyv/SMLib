@@ -15,6 +15,12 @@ constexpr uint32_t SML_VM_SET_PRIMARY =  0x00000010;
 constexpr uint32_t SML_VM_RESET       =  0x40000000;
 constexpr uint32_t SML_VM_NORESET     =  0x10000000;
 
+//----------------------------------------------------------------------------
+// Flags for multidisplay system
+//----------------------------------------------------------------------------
+constexpr bool SML_MD_PRIMARY_ONLY     = false;
+constexpr bool SML_MD_DESKTOP_DISPLAYS = !SML_MD_PRIMARY_ONLY;
+
 } // namespace video
 } // namespace sml
 
