@@ -29,7 +29,7 @@ namespace video {
 			//-----------------------------------------------------------------
 			// Returnin nuber of display instances
 			//-----------------------------------------------------------------
-			uint32_t GetNumberDisplays();
+			size_t GetNumberDisplays();
 
 			//-----------------------------------------------------------------
 			// Returning a reference to a display instance
@@ -55,7 +55,10 @@ namespace video {
 			// Adding a display instance to a container
 			//-----------------------------------------------------------------
 			void RegInstance( const uint32_t &index, const Display &regInst );
-			
+
+			//-----------------------------------------------------------------
+			// Clear container with displays
+			//-----------------------------------------------------------------
 			void ClearDisplayInstances();
 
 	}; // class DisplayAccess

@@ -18,10 +18,14 @@ namespace video {
     //-------------------------------------------------------------------------
     // Destructor
     //-------------------------------------------------------------------------
-    MultiDisplay::~MultiDisplay() { 
-        displays_.clear();
+    MultiDisplay::~MultiDisplay() 
+    { 
+        ClearDisplayInstances();
     }
-
+    
+    //-----------------------------------------------------------------
+    // Clear container with displays
+    //-----------------------------------------------------------------
     void MultiDisplay::ClearDisplayInstances()
     {
         displays_.clear();
@@ -44,12 +48,12 @@ namespace video {
                  cls::DisplayImpl::GetDisplayDesktop( i, &display ); 
                  i++ )
             {
-                multiDisplaysInstance.RegInstance(i, display);
+                multiDisplaysInstance.RegInstance( i, display );
             }
             break;
         default:
-            cls::DisplayImpl::GetDisplayDesktop(0, &display);
-            multiDisplaysInstance.RegInstance(0, display);
+            cls::DisplayImpl::GetDisplayDesktop( 0, &display );
+            multiDisplaysInstance.RegInstance( 0, display );
             break;
         }
         
@@ -61,7 +65,7 @@ namespace video {
     //-------------------------------------------------------------------------
     size_t MultiDisplay::GetNumberDisplays()
     {
-        return numberInstances_;
+        return this->displays_.size();
     }
     //-----------------------------------------------------------------
     // Adding a display instance to a container
@@ -70,7 +74,6 @@ namespace video {
     MultiDisplay::RegInstance( const uint32_t &index, const Display &regInst ) 
     { 
         displays_.insert(std::pair<uint32_t, Display>(index, regDisp));
-        numberInstances++;
     }
 
     //-----------------------------------------------------------------
