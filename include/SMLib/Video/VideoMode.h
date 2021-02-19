@@ -22,16 +22,16 @@ namespace sml {
                 // m_bitPerPixel     : 32
                 // m_DisplayFrecancy : 60 Hz
                 //-----------------------------------------------------------------
-                VideoMode( );
+            VideoMode( );
 
                 //-----------------------------------------------------------------
                 // Custom constructor with parameters
                 //-----------------------------------------------------------------
-                VideoMode( uint32_t width 
-                         , uint32_t height 
-                         , uint32_t bitPerPixel = 32 
-                         , uint32_t frecency    = 60 );
-
+            VideoMode( uint32_t width,
+                       uint32_t height, 
+                       uint32_t bitPerPixel = 32, 
+                       uint32_t frecency    = 60 );
+                
                 //-----------------------------------------------------------------
                 // Member data
                 //-----------------------------------------------------------------
@@ -40,7 +40,22 @@ namespace sml {
                 uint32_t bitPerPixel;     
                 uint32_t displayFrecency;
 
-        }; // struct VideoMOde
+        }; // struct VideoMode
+
+SML_VIDEO_API bool operator ==(const VideoMode& left, const VideoMode& right);
+
+SML_VIDEO_API bool operator !=(const VideoMode& left, const VideoMode& right);
+
+//-----------------------------------------------------------------------------
+// Disable 
+//
+// TODO Documtation
+//-----------------------------------------------------------------------------
+bool operator >(const VideoMode& left, const VideoMode& right)  = delete;
+bool operator <(const VideoMode& left, const VideoMode& right)  = delete;
+bool operator >=(const VideoMode& left, const VideoMode& right) = delete;
+bool operator <=(const VideoMode& left, const VideoMode& right) = delete;
+
     } // namespace video
 } // namspace sml
 #endif // !SML_VIDEO_MODE_H_

@@ -13,22 +13,38 @@ namespace sml {
         // Default constructor
         //---------------------------------------------------------------------
         VideoMode::VideoMode() 
-                    : m_Width           ( 640 ) 
-                    , m_Height          ( 480 ) 
-                    , m_BitPerPixel     ( 32 )
-                    , m_DisplayFrecency ( 60 ) { }
+        : width           ( 640 ),
+          height          ( 480 ), 
+          bitPerPixel     ( 32 ),
+          displayFrecency ( 60 ) { }
 
         //---------------------------------------------------------------------
         // Custom constructor
         //---------------------------------------------------------------------
-        VideoMode::VideoMode( uint32_t width 
-                            , uint32_t height 
-                            , uint32_t bitPerPixel
-                            , uint32_t frecancy) 
-                            : width           ( width ) 
-                            , height          ( height ) 
-                            , bitPerPixel     ( bitPerPixel )
-                            , displayFrecency ( frecancy ) { }
+        VideoMode::VideoMode( uint32_t width, 
+                              uint32_t height, 
+                              uint32_t bitPerPixel,
+                              uint32_t frecancy) 
+        : width           ( width ), 
+          height          ( height ), 
+          bitPerPixel     ( bitPerPixel ),
+          displayFrecency ( frecancy ) { }
+
+        bool operator ==(const VideoMode& left, const VideoMode& right)
+            {
+                return ((left.width == right.width) &&
+                        (left.height == right.height) &&
+                        (left.bitPerPixel == right.bitPerPixel) &&
+                        (left.displayFrecency == right.displayFrecency));
+            }
+
+        bool operator !=(const VideoMode& left, const VideoMode& right)
+            {
+                return !((left.width == right.width) &&
+                         (left.height == right.height) &&
+                         (left.bitPerPixel == right.bitPerPixel) &&
+                         (left.displayFrecency == right.displayFrecency));
+            }
 
     } // namespace video
 } // namspace sml
