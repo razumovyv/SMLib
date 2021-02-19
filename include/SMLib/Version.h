@@ -4,7 +4,7 @@
 //-----------------------------------------------------------------------------
 // Don't edit! Genarated automaticaly
 //-----------------------------------------------------------------------------
-#define SML_VERSION_MJOR 1
+#define SML_VERSION_MJOR  1
 #define SML_VERSION_MINOR 0
 #define SML_VERSION_PATCH 0
 #define SML_VERSION_TWEAK 0
