@@ -1,6 +1,6 @@
 //------------------------------ File DisplayAccess.cpp -----------------------
 
-#include <SMLib/Video/MultiDisplays.h>
+#include <SMLib/Video/MultiDisplay.h>
 #include "DisplayImpl.h"
 
 namespace sml { 
@@ -37,8 +37,9 @@ namespace video {
     MultiDisplay* MultiDisplay::GetMultiDisplays( const bool useMultidisplay )
     {
         static MultiDisplay multiDisplaysInstance;
-        
+
         multiDisplaysInstance.ClearDisplayInstances();
+
         Display display;
 
         switch (useMultidisplay)
@@ -48,12 +49,12 @@ namespace video {
                  cls::DisplayImpl::GetDisplayDesktop( i, &display ); 
                  i++ )
             {
-                multiDisplaysInstance.RegInstance( i, display );
+                multiDisplaysInstance.RegInstance( display );
             }
             break;
         default:
             cls::DisplayImpl::GetDisplayDesktop( 0, &display );
-            multiDisplaysInstance.RegInstance( 0, display );
+            multiDisplaysInstance.RegInstance( display );
             break;
         }
         
@@ -63,7 +64,7 @@ namespace video {
     //-------------------------------------------------------------------------
     // Returnin nuber of display instances
     //-------------------------------------------------------------------------
-    size_t MultiDisplay::GetNumberDisplays()
+    size_t MultiDisplay::GetNumberDisplays() const
     {
         return this->displays_.size();
     }
@@ -71,15 +72,15 @@ namespace video {
     // Adding a display instance to a container
     //-----------------------------------------------------------------
     void 
-    MultiDisplay::RegInstance( const uint32_t &index, const Display &regInst ) 
+    MultiDisplay::RegInstance( const Display &regInst ) 
     { 
-        displays_.insert(std::pair<uint32_t, Display>(index, regDisp));
+        displays_.emplace_back( regInst );
     }
 
     //-----------------------------------------------------------------
     // Returning a reference to a display instance
     //-----------------------------------------------------------------
-    Display& MultiDisplay::GetDisplayRef( const uint32_t &index ) const 
+    Display MultiDisplay::GetDisplayRef( const uint32_t& index ) const
     {
         return displays_[index];
     }
