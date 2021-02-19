@@ -13,7 +13,7 @@ namespace sml {
             
             protected:
                 NoneCopyable() {}
-                virtual ~NoneCopyable() = default;
+                ~NoneCopyable() {};
             private:
                 NoneCopyable(const NoneCopyable&) = delete;
                 NoneCopyable& operator=(const NoneCopyable&) = delete;
