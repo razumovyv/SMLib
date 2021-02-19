@@ -30,10 +30,7 @@ namespace video {
 //-----------------------------------------------------------------------------
 namespace cls {
     class DisplayImpl{
-
-        protected:
-            friend class Display;
-
+        public:
             //---------------------------------------------------------
             // Returning an active display instance
             //
