@@ -3,7 +3,7 @@
 #define SML_MULTI_DISPLAYS_H_
 
 
-#include <map>
+#include <vector>
 #include <SMLib/System/NoneCopyable.h>
 #include <SMLib/Video/Export.h>
 #include <SMLib/Video/Display.h>
@@ -11,7 +11,7 @@
 namespace sml { 
 namespace video {
 
-	class SML_VIDEO_API MultiDisplay : private system::NoneCopyable {
+	class SML_VIDEO_API MultiDisplay : system::NoneCopyable {
 
 		public:
 
@@ -29,12 +29,12 @@ namespace video {
 			//-----------------------------------------------------------------
 			// Returnin nuber of display instances
 			//-----------------------------------------------------------------
-			size_t GetNumberDisplays();
+			size_t GetNumberDisplays() const;
 
 			//-----------------------------------------------------------------
 			// Returning a reference to a display instance
 			//-----------------------------------------------------------------
-			Display& GetDisplayRef( const uint32_t &index ) const;
+			Display GetDisplayRef( const uint32_t& index ) const;
 
 
 
@@ -49,12 +49,12 @@ namespace video {
 			//-----------------------------------------------------------------
 			// Conteiner for diaplys instances
 			//-----------------------------------------------------------------
-			std::map< uint32_t, Display > displays_;
+			std::vector< Display > displays_;
 
 			//-----------------------------------------------------------------
 			// Adding a display instance to a container
 			//-----------------------------------------------------------------
-			void RegInstance( const uint32_t &index, const Display &regInst );
+			void RegInstance( const Display &regInst );
 
 			//-----------------------------------------------------------------
 			// Clear container with displays
