@@ -34,23 +34,24 @@ endif()
  # define the export symbol of the module
  string(REPLACE "-" "_" NAME_UPPER "${target}")
  string(TOUPPER "${NAME_UPPER}" NAME_UPPER)
- set_target_properties(${target} PROPERTIES DEFINE_SYMBOL ${NAME_UPPER}_EXPORTS)
+ message("name upper: ${NAME_UPPER}")
+ set_target_properties(${target} PROPERTIES DEFINE_SYMBOL ${NAME_UPPER}_EXPORT)
 
- if(NOT THIS_STATIC)
-    set_target_properties(${target} PROPERTIES DEBUG_POSTFIX -Debug)
+ if(BUILD_SHARED_LIBS AND (NOT THIS_STATIC))
+    set_target_properties(${target} PROPERTIES DEBUG_POSTFIX -debug)
  else()
-    set_target_properties(${target} PROPERTIES DEBUG_POSTFIX -Static-Debug)
-    set_target_properties(${target} PROPERTIES RELEASE_POSTFIX -Static)
-    set_target_properties(${target} PROPERTIES MINSIZEREL_POSTFIX -Static)
-    set_target_properties(${target} PROPERTIES RELWITHDEBINFO_POSTFIX -Static)
+    set_target_properties(${target} PROPERTIES DEBUG_POSTFIX -static-debug)
+    set_target_properties(${target} PROPERTIES RELEASE_POSTFIX -static)
+    set_target_properties(${target} PROPERTIES MINSIZEREL_POSTFIX -static)
+    set_target_properties(${target} PROPERTIES RELWITHDEBINFO_POSTFIX -static)
  endif()
 
  set_target_properties(${target} PROPERTIES FOLDER "SMLib")
 
  install(TARGETS ${target} EXPORT SMLibExports
-         RUNTIME DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} COMPONENT bin
-         LIBRARY DESTINATION ${CMAKE_LIBRARY_OUTPUT_DIRECTORY} COMPONENT bin
-         ARCHIVE DESTINATION ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY} COMPONENT lib
+         RUNTIME DESTINATION ${SML_INSTALL_ROOT_DIR}/bin COMPONENT bin
+         LIBRARY DESTINATION ${SML_INSTALL_ROOT_DIR}/lib COMPONENT bin
+         ARCHIVE DESTINATION ${SML_INSTALL_ROOT_DIR}/lib COMPONENT lib
          CONFIGURATIONS Debug
         )
     
