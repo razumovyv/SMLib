@@ -1,6 +1,7 @@
 //-------------------------- File Display.cpp ---------------------------------
 #include <SMLib/Video/Display.h>
 #include "DisplayImpl.h"
+#include <iostream>
 
 namespace sml {  namespace video {
 
@@ -17,6 +18,7 @@ namespace sml {  namespace video {
     isPrimary_(false)
     { 
         listVideoModes_.clear();
+        std::cout << "DisplayConstructor" << std::endl;
     }
 
     //---------------------------------------------------------------------
@@ -29,12 +31,13 @@ namespace sml {  namespace video {
                       const char* adapterDescription, 
                       const char* monitorDescription, 
                       const bool  isPrimary ) :
-                      name_               ( namee ), 
+                      name_               ( name ), 
                       adapterDescription_ ( adapterDescription ), 
                       monitorDescription_ ( monitorDescription ), 
                       isPrimary_          ( isPrimary   ) 
     { 
         listVideoModes_ = cls::DisplayImpl::GetListVideoModes( name_.c_str( ) );
+        std::cout << "DisplayConstructor" << std::endl;
     }
 
     //---------------------------------------------------------------------
@@ -43,9 +46,9 @@ namespace sml {  namespace video {
     // TODO: Documentations
     //
     //---------------------------------------------------------------------
-    Display::Display( const string &name, 
-                      const string &adapterDescription, 
-                      const string &monitorDescription, 
+    Display::Display( const std::string &name, 
+                      const std::string &adapterDescription, 
+                      const std::string &monitorDescription, 
                       const bool   isPrimary ) : 
                       name_               ( name ), 
                       adapterDescription_ ( adapterDescription ), 
@@ -53,11 +56,13 @@ namespace sml {  namespace video {
                       isPrimary_          ( isPrimary   ) 
     { 
         listVideoModes_ = cls::DisplayImpl::GetListVideoModes( name_.c_str( ) );
+        std::cout << "DisplayConstructor" << std::endl;
     }
 
     Display::~Display() 
     { 
         listVideoModes_.clear(); 
+        std::cout << "DisplayDestructor" << std::endl;
     }
 
     //-----------------------------------------------------------------
@@ -100,10 +105,10 @@ namespace sml {  namespace video {
     // TODO: Documentations
     //
     //-------------------------------------------------------------
-    bool Display::SetVideoMode( const VideoMode& videoMode, uint32_t flags )
+    bool Display::SetVideoMode( const VideoMode& videoMode, uint32_t flags ) const
     {
 
-        if( !IsValidMode( videMode ) ) return false;
+        if( !IsValidMode( videoMode ) ) return false;
         
         return cls::DisplayImpl::SetVideoMode( name_.c_str( ), videoMode, flags );
     }
@@ -130,22 +135,24 @@ namespace sml {  namespace video {
         return isPrimary_;
     }
 
-    bool operator==( const Display& left, const Display& right ) 
+    bool operator ==( const Display& left, const Display& right ) 
     {
         
         return (( left.name_                == right.name_               )
               &&( left.adapterDescription_  == right.adapterDescription_ )
               &&( left.monitorDescription_  == right.monitorDescription_ )
-              &&( left.isPrimary_           == right.isPrimary_          ));
+              &&( left.isPrimary_           == right.isPrimary_          )
+              && (left.listVideoModes_      == right.listVideoModes_     ));
     }
 
-    bool operator!=( const Display& left, const Display& right ) 
+    bool operator !=( const Display& left, const Display& right ) 
     {
     
         return !( ( left.name_               == right.name_               )
                 &&( left.adapterDescription_ == right.adapterDescription_ )
                 &&( left.monitorDescription_ == right.monitorDescription_ )
-                &&( left.isPrimary_          == right.isPrimary_          ));
+                &&( left.isPrimary_          == right.isPrimary_          )
+                && (left.listVideoModes_     == right.listVideoModes_));
     }
 } // namespace video
 } // namespace sml

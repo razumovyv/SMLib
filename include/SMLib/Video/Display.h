@@ -54,9 +54,9 @@ namespace video {
             // TODO: Documentations
             //
             //-----------------------------------------------------------------
-            Display( const string &name, 
-                     const string &adapterDescription, 
-                     const string &monitorDescription, 
+            Display( const std::string &name, 
+                     const std::string &adapterDescription, 
+                     const std::string &monitorDescription, 
                      const bool   isPrimary );
             
 
@@ -91,7 +91,7 @@ namespace video {
             //
             //-----------------------------------------------------------------
             bool SetVideoMode( const VideoMode& videoMode, 
-                               uint32_t flags = SML_VM_FULLSCREEN );
+                               uint32_t flags = SML_VM_FULLSCREEN ) const;
 
             //-----------------------------------------------------------------
             // Checking a selected mode
@@ -109,8 +109,8 @@ namespace video {
             //-----------------------------------------------------------------
             bool IsPrimary( ) const;
 
-            friend bool operator==( const Display& left, const Display& right );
-            friend bool operator!=( const Display& left, const Display& right );
+            friend bool operator ==( const Display& left, const Display& right );
+            friend bool operator !=( const Display& left, const Display& right );
 
         private:
             //-----------------------------------------------------------------
@@ -128,6 +128,11 @@ namespace video {
             std::vector< VideoMode> listVideoModes_;
 
     };
+bool operator >(const Display& left, const Display& right) = delete;
+bool operator <(const Display& left, const Display& right) = delete;
+bool operator >=(const Display& left, const Display& right) = delete;
+bool operator <=(const Display& left, const Display& right) = delete;
+
 } // namspace video
 } // namspace sml
 #endif // !SML_DISPLAY_H_
