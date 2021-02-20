@@ -33,6 +33,8 @@ namespace video {
 
 			//-----------------------------------------------------------------
 			// Returning a reference to a display instance
+			//
+			// FIXME
 			//-----------------------------------------------------------------
 			Display GetDisplayRef( const uint32_t& index ) const;
 
@@ -48,6 +50,7 @@ namespace video {
 
 			//-----------------------------------------------------------------
 			// Conteiner for diaplys instances
+			// FIXME displays container
 			//-----------------------------------------------------------------
 			std::vector< Display > displays_;
 
