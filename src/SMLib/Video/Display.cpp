@@ -95,6 +95,22 @@ namespace sml {  namespace video {
         return isPrimary_;
     }
 
+    //-------------------------------------------------------------------------
+    // Getting an adapters friendly description
+    //-------------------------------------------------------------------------   
+    std::string Display::GetAdapterDescription( ) const
+    {
+        return adapterDescription_;
+    }
+
+    //-------------------------------------------------------------------------
+    // Getting an adapters friendly description
+    //-------------------------------------------------------------------------   
+    std::string Display::GetMonitorDescription( ) const
+    {
+        return monitorDescription_;
+    }
+
     bool operator ==( const Display& left, const Display& right ) 
     {
         auto _left = std::tie( left.name_,
@@ -113,9 +129,9 @@ namespace sml {  namespace video {
     bool operator !=( const Display& left, const Display& right ) 
     {
         auto _left = std::tie( left.name_,
-                            left.adapterDescription_,
-                            left.monitorDescription_,
-                            left.isPrimary_ );
+                               left.adapterDescription_,
+                               left.monitorDescription_,
+                               left.isPrimary_ );
 
         auto _right = std::tie( right.name_,
                                 right.adapterDescription_,

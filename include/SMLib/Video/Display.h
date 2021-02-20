@@ -99,6 +99,16 @@ namespace video {
             bool IsPrimary( ) const;
 
             //-----------------------------------------------------------------
+            // Getting a adapters fiendly description
+            //-----------------------------------------------------------------
+            std::string GetAdapterDescription( ) const;
+
+            //-----------------------------------------------------------------
+            // Getting a monitors fiendly description
+            //-----------------------------------------------------------------
+            std::string GetMonitorDescription( ) const;
+
+            //-----------------------------------------------------------------
             //
             // TODO: Documentations
             //
