@@ -10,13 +10,13 @@ namespace sml {
     namespace system {
 
         class SML_SYSTEM_API NoneCopyable {
+            public:
+                NoneCopyable(const NoneCopyable&) = delete;
+                NoneCopyable& operator=(const NoneCopyable&) = delete;
             
             protected:
                 NoneCopyable() {}
                 ~NoneCopyable() {};
-            private:
-                NoneCopyable(const NoneCopyable&) = delete;
-                NoneCopyable& operator=(const NoneCopyable&) = delete;
         };
     } // namespace system
 } // namespace sml
