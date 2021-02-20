@@ -12,6 +12,7 @@ CMakeSettings.json
 .vscode
 .vs
 _deps
+tests/test-app
 [Oo]ut
 [Bb]uild
 cpp.hint
