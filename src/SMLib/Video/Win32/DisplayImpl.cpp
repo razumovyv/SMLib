@@ -91,31 +91,20 @@ namespace cls {
     //-------------------------------------------------------------------------
     // Returning a current desktop mode for selected display
     //-------------------------------------------------------------------------
-    bool DisplayImpl::GetVideoMode( const char *displayName, VideoMode *pMode )
+    VideoMode DisplayImpl::GetVideoMode( const char *displayName )
     {
 
         DEVMODE md;
         ZeroMemory( &md, sizeof( md ) );
 
-        bool success = EnumDisplaySettings( displayName,                           
-                                            ENUM_CURRENT_SETTINGS, &md );
+        EnumDisplaySettings( displayName, ENUM_CURRENT_SETTINGS, &md );
 
-        if ( success )
-        {
-            VideoMode mode( md.dmPelsWidth, 
+        return VideoMode(   md.dmPelsWidth, 
                             md.dmPelsHeight, 
                             md.dmBitsPerPel, 
                             md.dmDisplayFrequency );
 
-            *( pMode ) = mode;
-
-            return true;
-
-        } else {
-
-            return false;
-
-        }
+        
     }
 
     //-----------------------------------------------------------------

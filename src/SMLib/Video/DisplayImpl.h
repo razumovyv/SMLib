@@ -55,7 +55,7 @@ namespace cls {
             // TODO Documentation
             //
             //-----------------------------------------------------------------
-            static bool GetVideoMode( const char* displayName, VideoMode *pMode );
+            static VideoMode GetVideoMode( const char* displayName );
 
             //-----------------------------------------------------------------
             // Seting a video mode to a selected display
