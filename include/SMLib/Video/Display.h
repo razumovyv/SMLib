@@ -38,18 +38,7 @@ namespace video {
             Display( );
 
             //-----------------------------------------------------------------
-            // Constructor #1
-            //
-            // TODO: Documentations
-            //
-            //-----------------------------------------------------------------
-            Display( const char* name, 
-                     const char* adapterDescription, 
-                     const char* monitorDescription, 
-                     const bool  isPrimary );
-
-            //-----------------------------------------------------------------
-            //Constructor #2
+            // Base constructor 
             //
             // TODO: Documentations
             //
@@ -109,8 +98,21 @@ namespace video {
             //-----------------------------------------------------------------
             bool IsPrimary( ) const;
 
-            friend bool operator ==( const Display& left, const Display& right );
-            friend bool operator !=( const Display& left, const Display& right );
+            //-----------------------------------------------------------------
+            //
+            // TODO: Documentations
+            //
+            //-----------------------------------------------------------------
+            friend SML_VIDEO_API 
+            bool operator ==( const Display& left, const Display& right );
+
+            //-----------------------------------------------------------------
+            //
+            // TODO: Documentations
+            //
+            //-----------------------------------------------------------------
+            friend SML_VIDEO_API 
+            bool operator !=( const Display& left, const Display& right );
 
         private:
             //-----------------------------------------------------------------
@@ -124,10 +126,14 @@ namespace video {
             std::string      adapterDescription_;
             std::string      monitorDescription_;
             bool             isPrimary_;
-            
-            std::vector< VideoMode> listVideoModes_;
 
     };
+
+//-----------------------------------------------------------------
+//
+// TODO: Documentations
+//
+//-----------------------------------------------------------------    
 bool operator >(const Display& left, const Display& right) = delete;
 bool operator <(const Display& left, const Display& right) = delete;
 bool operator >=(const Display& left, const Display& right) = delete;
