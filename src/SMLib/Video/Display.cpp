@@ -1,7 +1,7 @@
 //-------------------------- File Display.cpp ---------------------------------
+#include <tuple>
 #include <SMLib/Video/Display.h>
 #include "DisplayImpl.h"
-#include <iostream>
 
 namespace sml {  namespace video {
 
@@ -12,36 +12,13 @@ namespace sml {  namespace video {
     //
     //---------------------------------------------------------------------
     Display::Display() : 
-    name_("none"),
-    adapterDescription_("none"),
-    monitorDescription_("none"),
-    isPrimary_(false)
-    { 
-        listVideoModes_.clear();
-        std::cout << "DisplayConstructor" << std::endl;
-    }
+    name_               ("none"),
+    adapterDescription_ ("none"),
+    monitorDescription_ ("none"),
+    isPrimary_          (false) { }
 
     //---------------------------------------------------------------------
-    // Constructor #1
-    //
-    // TODO: Documentations
-    //
-    //---------------------------------------------------------------------
-    Display::Display( const char* name, 
-                      const char* adapterDescription, 
-                      const char* monitorDescription, 
-                      const bool  isPrimary ) :
-                      name_               ( name ), 
-                      adapterDescription_ ( adapterDescription ), 
-                      monitorDescription_ ( monitorDescription ), 
-                      isPrimary_          ( isPrimary   ) 
-    { 
-        listVideoModes_ = cls::DisplayImpl::GetListVideoModes( name_.c_str( ) );
-        std::cout << "DisplayConstructor" << std::endl;
-    }
-
-    //---------------------------------------------------------------------
-    // FIXME Base constructor
+    // Base constructor
     //
     // TODO: Documentations
     //
@@ -49,21 +26,13 @@ namespace sml {  namespace video {
     Display::Display( const std::string &name, 
                       const std::string &adapterDescription, 
                       const std::string &monitorDescription, 
-                      const bool   isPrimary ) : 
+                      const bool        isPrimary ) : 
                       name_               ( name ), 
                       adapterDescription_ ( adapterDescription ), 
                       monitorDescription_ ( monitorDescription ), 
-                      isPrimary_          ( isPrimary   ) 
-    { 
-        listVideoModes_ = cls::DisplayImpl::GetListVideoModes( name_.c_str( ) );
-        std::cout << "DisplayConstructor" << std::endl;
-    }
+                      isPrimary_          ( isPrimary   ) { }
 
-    Display::~Display() 
-    { 
-        listVideoModes_.clear(); 
-        std::cout << "DisplayDestructor" << std::endl;
-    }
+    Display::~Display() { }
 
     //-----------------------------------------------------------------
     // Returning a supported video modes list
@@ -74,7 +43,7 @@ namespace sml {  namespace video {
     std::vector< VideoMode> Display::GetListVideoModes( ) const 
     {
 
-        return listVideoModes_;
+        return cls::DisplayImpl::GetListVideoModes( name_.c_str( ) );
     }   
 
     //---------------------------------------------------------------------
@@ -86,16 +55,7 @@ namespace sml {  namespace video {
     VideoMode Display::GetVideoMode( ) const 
     {
 
-        VideoMode videoMode;
-        if( cls::DisplayImpl::GetVideoMode( name_.c_str( ), &videoMode ) )
-        {
-            return videoMode;
-
-        } else {
-
-            // TODO Error log
-            return VideoMode( 0,0,0,0 );
-        }
+        return cls::DisplayImpl::GetVideoMode( name_.c_str( ) );
         
     }
 
@@ -137,22 +97,32 @@ namespace sml {  namespace video {
 
     bool operator ==( const Display& left, const Display& right ) 
     {
-        
-        return (( left.name_                == right.name_               )
-              &&( left.adapterDescription_  == right.adapterDescription_ )
-              &&( left.monitorDescription_  == right.monitorDescription_ )
-              &&( left.isPrimary_           == right.isPrimary_          )
-              && (left.listVideoModes_      == right.listVideoModes_     ));
+        auto _left = std::tie( left.name_,
+                               left.adapterDescription_,
+                               left.monitorDescription_,
+                               left.isPrimary_ );
+
+        auto _right = std::tie( right.name_,
+                                right.adapterDescription_,
+                                right.monitorDescription_,
+                                right.isPrimary_ );
+
+        return (_left == _right);
     }
 
     bool operator !=( const Display& left, const Display& right ) 
     {
-    
-        return !( ( left.name_               == right.name_               )
-                &&( left.adapterDescription_ == right.adapterDescription_ )
-                &&( left.monitorDescription_ == right.monitorDescription_ )
-                &&( left.isPrimary_          == right.isPrimary_          )
-                && (left.listVideoModes_     == right.listVideoModes_));
+        auto _left = std::tie( left.name_,
+                            left.adapterDescription_,
+                            left.monitorDescription_,
+                            left.isPrimary_ );
+
+        auto _right = std::tie( right.name_,
+                                right.adapterDescription_,
+                                right.monitorDescription_,
+                                right.isPrimary_ );
+
+        return (_left != _right);
     }
 } // namespace video
 } // namespace sml
