@@ -3,6 +3,7 @@
 //-----------------------------------------------------------------------------
 // Headers
 //-----------------------------------------------------------------------------
+#include <tuple>
 #include <SMLib/Video/VideoMode.h>
 
 namespace sml {
@@ -32,18 +33,32 @@ namespace sml {
 
         bool operator ==(const VideoMode& left, const VideoMode& right)
             {
-                return ((left.width == right.width) &&
-                        (left.height == right.height) &&
-                        (left.bitPerPixel == right.bitPerPixel) &&
-                        (left.displayFrecency == right.displayFrecency));
+                 auto _left = std::tie( left.width, 
+                                        left.height, 
+                                        left.bitPerPixel,
+                                        left.displayFrecency );
+
+                auto  _right = std::tie( right.width,
+                                         right.height,
+                                         right.bitPerPixel,
+                                         right.displayFrecency );
+
+                return (_left == _right);
             }
 
         bool operator !=(const VideoMode& left, const VideoMode& right)
             {
-                return !((left.width == right.width) &&
-                         (left.height == right.height) &&
-                         (left.bitPerPixel == right.bitPerPixel) &&
-                         (left.displayFrecency == right.displayFrecency));
+                auto _left = std::tie( left.width, 
+                                       left.height, 
+                                       left.bitPerPixel,
+                                       left.displayFrecency );
+
+                auto  _right = std::tie( right.width,
+                                         right.height,
+                                         right.bitPerPixel,
+                                         right.displayFrecency );
+
+                return (_left != _right);
             }
 
     } // namespace video
