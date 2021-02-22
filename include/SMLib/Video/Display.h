@@ -12,6 +12,7 @@
 // Headers
 //-----------------------------------------------------------------------------
 #include <vector>
+#include <string>
 #include <SMLib/Video/Export.h>
 #include <SMLib/Video/VideoMode.h>
 #include <SMLib/Video/Flags.h>
