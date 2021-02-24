@@ -2,7 +2,8 @@
 #ifndef SML_VIDEO_TYPES_H_
 #define SML_VIDEO_TYPES_H_
 
-namespace sml{ namespace video{
+namespace sml{ 
+namespace video{
 
 //-----------------------------------------------------------------------------
 // Flags for SetVideoMode
@@ -23,8 +24,6 @@ constexpr bool SML_MD_DESKTOP_DISPLAYS = !SML_MD_PRIMARY_ONLY;
 
 } // namespace video
 } // namespace sml
-
-
 
 #endif
 //-------------------------- End of file Types.h ------------------------------
