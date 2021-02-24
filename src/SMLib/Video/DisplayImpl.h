@@ -29,46 +29,47 @@ namespace video {
 // A closed video module namespace
 //-----------------------------------------------------------------------------
 namespace cls {
-    class DisplayImpl{
-        public:
-            //---------------------------------------------------------
-            // Returning an active display instance
-            //
-            // TODO Documentation
-            //
-            //---------------------------------------------------------
-            static bool 
-            GetDisplayDesktop( const size_t &index, Display* dispInst );          
+    
+class DisplayImpl{
+    public:
+        //---------------------------------------------------------
+        // Returning an active display instance
+        //
+        // TODO Documentation
+        //
+        //---------------------------------------------------------
+        static bool 
+        GetDisplayDesktop( const size_t &index, Display* dispInst );          
 
-            //-----------------------------------------------------------------
-            // Returning a vector of supported modes for display
-            //
-            //TODO Documentation
-            //
-            //-----------------------------------------------------------------
-            static std::vector< VideoMode > 
-            GetListVideoModes( const char* displayName );
+        //-----------------------------------------------------------------
+        // Returning a vector of supported modes for display
+        //
+        //TODO Documentation
+        //
+        //-----------------------------------------------------------------
+        static std::vector< VideoMode > 
+        GetListVideoModes( const char* displayName );
 
-            //-----------------------------------------------------------------
-            // Returning a current desktop mode for selected display
-            //
-            // TODO Documentation
-            //
-            //-----------------------------------------------------------------
-            static VideoMode GetVideoMode( const char* displayName );
+        //-----------------------------------------------------------------
+        // Returning a current desktop mode for selected display
+        //
+        // TODO Documentation
+        //
+        //-----------------------------------------------------------------
+        static VideoMode GetVideoMode( const char* displayName );
 
-            //-----------------------------------------------------------------
-            // Seting a video mode to a selected display
-            //
-            // TODO Documentation
-            //
-            //-----------------------------------------------------------------
-            static bool SetVideoMode( const char* displayName, 
-                                      const VideoMode &mode, 
-                                      uint32_t flags );
+        //-----------------------------------------------------------------
+        // Seting a video mode to a selected display
+        //
+        // TODO Documentation
+        //
+        //-----------------------------------------------------------------
+        static bool SetVideoMode( const char* displayName, 
+                                  const VideoMode &mode, 
+                                  uint32_t flags );
 
-        
-    };
+
+};
     
 } // namespace cls
 } // namespace video
