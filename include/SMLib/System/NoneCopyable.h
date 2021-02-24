@@ -6,19 +6,19 @@
 #include <SMLib/System/Export.h>
 
 namespace sml {
+namespace system {
 
-    namespace system {
+class SML_SYSTEM_API NoneCopyable {
 
-        class SML_SYSTEM_API NoneCopyable {
-            public:
-                NoneCopyable(const NoneCopyable&) = delete;
-                NoneCopyable& operator=(const NoneCopyable&) = delete;
-            
-            protected:
-                NoneCopyable() {}
-                ~NoneCopyable() {};
-        };
-    } // namespace system
+ protected:
+  NoneCopyable() = default;
+  ~NoneCopyable() = default;
+ private:
+
+  NoneCopyable(const NoneCopyable&) = delete;
+  NoneCopyable& operator=(const NoneCopyable&) = delete;
+};
+} // namespace system
 } // namespace sml
 
 #endif // !SML_NONECOPYABLE_H_
