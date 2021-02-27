@@ -5,13 +5,10 @@ using namespace sml::video;
 
 int main(int argc, char* argv[])
 {
-	const MultiDisplay* Inst = MultiDisplay::GetMultiDisplays();
 
-	//const Display primaryDisp = Inst->GetDisplayRef(0);
-	std::cout << Inst << std::endl;
-	std::cin.get();
-	const MultiDisplay* Inst2 = MultiDisplay::GetMultiDisplays();
-	std::cout << Inst2 << std::endl;
-	std::cin.get();
+	auto displayList = Display::GetDisplaysList();
+	const DisplayPtr display = displayList[0];
+	VideoMode mode = display->GetVideoMode();
+    std::cout << "width: " << mode.width << std::endl;
 	return 0;
 }
