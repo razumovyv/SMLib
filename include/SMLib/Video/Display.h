@@ -46,9 +46,16 @@ public:
   ~Display() = default;
 
   //---------------------------------------------------------------------------
-  //
+  // Geting a list of shared pointers to displays
   //---------------------------------------------------------------------------
   static std::vector<DisplayPtr>  GetDisplaysList();
+
+  //---------------------------------------------------------------------------
+  //
+  // Returning number of active displays
+  //
+  //---------------------------------------------------------------------------
+  static uint32_t GetDisplayNumber();
 
   //---------------------------------------------------------------------------
   // Returning a supported video modes list
@@ -106,14 +113,6 @@ public:
   friend class cls::DisplayImpl;
 
   //---------------------------------------------------------------------------
-  // A default constructor
-  //
-  // TODO: Documentations
-  //
-  //---------------------------------------------------------------------------
-  Display() = default;
-
-  //---------------------------------------------------------------------------
   // Base constructor
   //
   // TODO: Documentations
@@ -123,6 +122,10 @@ public:
           const std::string& adapterDescription,
           const std::string& monitorDescription,
           const bool isPrimary);
+
+private:
+
+  static void Initialize();
 
 private:
 
@@ -137,6 +140,8 @@ private:
   std::string adapterDescription_;
   std::string monitorDescription_;
   bool isPrimary_;
+
+static std::vector<DisplayPtr> s_displays;
 };
 
 } // namspace video
