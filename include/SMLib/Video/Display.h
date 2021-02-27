@@ -11,146 +11,135 @@
 //-----------------------------------------------------------------------------
 // Headers
 //-----------------------------------------------------------------------------
-#include <vector>
-#include <string>
 #include <SMLib/Video/Export.h>
-#include <SMLib/Video/VideoMode.h>
 #include <SMLib/Video/Flags.h>
+#include <string>
+#include <vector>
+#include <memory>
 
 //-----------------------------------------------------------------------------
 // A main library namespace
 //-----------------------------------------------------------------------------
-namespace sml { 
+namespace sml {
 //-----------------------------------------------------------------------------
 // A opened video module namespace
 //-----------------------------------------------------------------------------
 namespace video {
-        
-class SML_VIDEO_API Display {
 
-    public:
+class VideoMode;
+class Display;
+namespace cls { class DisplayImpl; }
 
-        //-----------------------------------------------------------------
-        // A default constructor
-        //
-        // TODO: Documentations
-        //
-        //-----------------------------------------------------------------
-        Display( );
+using DisplayPtr = std::shared_ptr<Display>;
 
-        //-----------------------------------------------------------------
-        // Base constructor 
-        //
-        // TODO: Documentations
-        //
-        //-----------------------------------------------------------------
-        Display( const std::string &name, 
-                 const std::string &adapterDescription, 
-                 const std::string &monitorDescription, 
-                 const bool   isPrimary );
+class SML_VIDEO_API Display
+{
 
+public:
 
-        //-----------------------------------------------------------------
-        // A destructor
-        //
-        // TODO: Documentations
-        //
-        //-----------------------------------------------------------------
-        ~Display( );
+  //---------------------------------------------------------------------------
+  // A destructor
+  //
+  // TODO: Documentations
+  //
+  //---------------------------------------------------------------------------
+  ~Display() = default;
 
-        //-----------------------------------------------------------------
-        // Returning a supported video modes list
-        //
-        // TODO: Documentations
-        //
-        //-----------------------------------------------------------------
-        std::vector< VideoMode > GetListVideoModes( ) const;
+  //---------------------------------------------------------------------------
+  //
+  //---------------------------------------------------------------------------
+  static std::vector<DisplayPtr>  GetDisplaysList();
 
-        //-----------------------------------------------------------------
-        // Doing request to the operating system
-        //
-        // TODO: Documentations
-        //
-        //-----------------------------------------------------------------
-        VideoMode GetVideoMode( ) const;
+  //---------------------------------------------------------------------------
+  // Returning a supported video modes list
+  //
+  // TODO: Documentations
+  //
+  //---------------------------------------------------------------------------
+  std::vector<VideoMode> GetListVideoModes() const;
 
-        //-----------------------------------------------------------------
-        // Setting up a custom mode for this display
-        //
-        // TODO: Documentations
-        //
-        //-----------------------------------------------------------------
-        bool SetVideoMode( const VideoMode& videoMode, 
-                           uint32_t flags = SML_VM_FULLSCREEN ) const;
+  //---------------------------------------------------------------------------
+  // Doing request to the operating system
+  //
+  // TODO: Documentations
+  //
+  //---------------------------------------------------------------------------
+  VideoMode GetVideoMode() const;
 
-        //-----------------------------------------------------------------
-        // Checking a selected mode
-        //
-        // TODO: Documentations
-        //
-        //-----------------------------------------------------------------
-        bool IsValidMode( const VideoMode& videoMode ) const;
+  //---------------------------------------------------------------------------
+  // Setting up a custom mode for this display
+  //
+  // TODO: Documentations
+  //
+  //---------------------------------------------------------------------------
+  bool SetVideoMode(const VideoMode& videoMode,
+                    uint32_t flags = SML_VM_FULLSCREEN) const;
 
-        //-----------------------------------------------------------------
-        // Returning "true" if display is priamry
-        //
-        // TODO: Documentations
-        //
-        //-----------------------------------------------------------------
-        bool IsPrimary( ) const;
+  //---------------------------------------------------------------------------
+  // Checking a selected mode
+  //
+  // TODO: Documentations
+  //
+  //---------------------------------------------------------------------------
+  bool IsValidMode(const VideoMode& videoMode) const;
 
-        //-----------------------------------------------------------------
-        // Getting a adapters fiendly description
-        //-----------------------------------------------------------------
-        std::string GetAdapterDescription( ) const;
+  //---------------------------------------------------------------------------
+  // Returning "true" if display is priamry
+  //
+  // TODO: Documentations
+  //
+  //---------------------------------------------------------------------------
+  bool IsPrimary() const;
 
-        //-----------------------------------------------------------------
-        // Getting a monitors fiendly description
-        //-----------------------------------------------------------------
-        std::string GetMonitorDescription( ) const;
+  //---------------------------------------------------------------------------
+  // Getting a adapters fiendly description
+  //---------------------------------------------------------------------------
+  std::string GetAdapterDescription() const;
 
-        //-----------------------------------------------------------------
-        //
-        // TODO: Documentations
-        //
-        //-----------------------------------------------------------------
-        friend SML_VIDEO_API 
-        bool operator ==( const Display& left, const Display& right );
+  //---------------------------------------------------------------------------
+  // Getting a monitors fiendly description
+  //---------------------------------------------------------------------------
+  std::string GetMonitorDescription() const;
 
-        //-----------------------------------------------------------------
-        //
-        // TODO: Documentations
-        //
-        //-----------------------------------------------------------------
-        friend SML_VIDEO_API 
-        bool operator !=( const Display& left, const Display& right );
+ protected: 
 
-    private:
-        //-----------------------------------------------------------------
-        // Member fields
-        //
-        // TODO: Documentations
-        //
-        //-----------------------------------------------------------------
+  friend class cls::DisplayImpl;
 
-        std::string      name_;  
-        std::string      adapterDescription_;
-        std::string      monitorDescription_;
-        bool             isPrimary_;
+  //---------------------------------------------------------------------------
+  // A default constructor
+  //
+  // TODO: Documentations
+  //
+  //---------------------------------------------------------------------------
+  Display() = default;
 
+  //---------------------------------------------------------------------------
+  // Base constructor
+  //
+  // TODO: Documentations
+  //
+  //---------------------------------------------------------------------------
+  Display(const std::string& name,
+          const std::string& adapterDescription,
+          const std::string& monitorDescription,
+          const bool isPrimary);
+
+private:
+
+  //---------------------------------------------------------------------------
+  // Member fields
+  //
+  // TODO: Documentations
+  //
+  //---------------------------------------------------------------------------
+
+  std::string name_;
+  std::string adapterDescription_;
+  std::string monitorDescription_;
+  bool isPrimary_;
 };
-
-//-----------------------------------------------------------------
-//
-// TODO: Documentations
-//
-//-----------------------------------------------------------------    
-bool operator >(const Display& left, const Display& right) = delete;
-bool operator <(const Display& left, const Display& right) = delete;
-bool operator >=(const Display& left, const Display& right) = delete;
-bool operator <=(const Display& left, const Display& right) = delete;
 
 } // namspace video
 } // namspace sml
 #endif // !SML_DISPLAY_H_
-//---------------------- End of file Display.h --------------------------------ц
+//---------------------- End of file Display.h --------------------------------
