@@ -9,7 +9,6 @@
 #include <SMLib/Video/Flags.h>
 #include <SMLib/Video/VideoMode.h>
 #include <SMLib/Video/Display.h>
-#include <SMLib/Video/MultiDisplay.h>
 
 
 #endif // !SML_VIDEO_H_
