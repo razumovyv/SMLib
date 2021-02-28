@@ -7,8 +7,6 @@
 namespace sml {
 namespace video {
 
- std::vector<DisplayPtr> Display::s_displays;
-
 //-----------------------------------------------------------------------------
 // Base constructor
 //
@@ -26,29 +24,7 @@ Display::Display(const std::string& name,
   , isPrimary_(isPrimary) {}
 
 
-void
-Display::Initialize()
-{
-  s_displays = cls::DisplayImpl::GetDisplayList();
-}
-  //-----------------------------------------------------------------------------
-// Active displays
-//-----------------------------------------------------------------------------
-
-std::vector<DisplayPtr>
-Display::GetDisplaysList()
-{
-  if (s_displays.empty()) Initialize();
-  return s_displays;
-}
-
-uint32_t
-Display::GetDisplayNumber()
-{
-  if (s_displays.empty()) Initialize();
-  return (uint32_t)s_displays.size();
-}
-  //---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 // Returning a supported video modes list
 //
 // TODO: Documentations

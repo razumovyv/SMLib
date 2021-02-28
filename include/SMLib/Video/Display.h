@@ -12,10 +12,9 @@
 // Headers
 //-----------------------------------------------------------------------------
 #include <SMLib/Video/Export.h>
-#include <SMLib/Video/Flags.h>
+#include <SMLib/Video/GeneralTypes.h>
 #include <string>
 #include <vector>
-#include <memory>
 
 //-----------------------------------------------------------------------------
 // A main library namespace
@@ -27,10 +26,9 @@ namespace sml {
 namespace video {
 
 class VideoMode;
-class Display;
+
 namespace cls { class DisplayImpl; }
 
-using DisplayPtr = std::shared_ptr<Display>;
 
 class SML_VIDEO_API Display
 {
@@ -44,18 +42,6 @@ public:
   //
   //---------------------------------------------------------------------------
   ~Display() = default;
-
-  //---------------------------------------------------------------------------
-  // Geting a list of shared pointers to displays
-  //---------------------------------------------------------------------------
-  static std::vector<DisplayPtr>  GetDisplaysList();
-
-  //---------------------------------------------------------------------------
-  //
-  // Returning number of active displays
-  //
-  //---------------------------------------------------------------------------
-  static uint32_t GetDisplayNumber();
 
   //---------------------------------------------------------------------------
   // Returning a supported video modes list
@@ -111,6 +97,7 @@ public:
  protected: 
 
   friend class cls::DisplayImpl;
+  friend class DisplayContainer;
 
   //---------------------------------------------------------------------------
   // Base constructor
@@ -123,9 +110,6 @@ public:
           const std::string& monitorDescription,
           const bool isPrimary);
 
-private:
-
-  static void Initialize();
 
 private:
 
@@ -141,7 +125,6 @@ private:
   std::string monitorDescription_;
   bool isPrimary_;
 
-static std::vector<DisplayPtr> s_displays;
 };
 
 } // namspace video
