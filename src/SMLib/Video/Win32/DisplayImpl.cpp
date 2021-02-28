@@ -22,7 +22,7 @@ namespace cls {
 //-----------------------------------------------------------------------------
 // Returning an active display instance
 //-----------------------------------------------------------------------------
-std::vector<DisplayPtr>
+std::vector<PDisplay>
 DisplayImpl::GetDisplayList()
 {
   DISPLAY_DEVICE di; // Display Inforamtion
@@ -34,7 +34,7 @@ DisplayImpl::GetDisplayList()
   std::string monitorDesc;
   bool isPrimary = false;
 
-  std::vector<DisplayPtr> displays;
+  std::vector<PDisplay> displays;
 
   for ( size_t i = 0; EnumDisplayDevices(NULL, i, &di, 0); i++) 
   {

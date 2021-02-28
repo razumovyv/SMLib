@@ -40,7 +40,7 @@ public:
   // TODO Documentation
   //
   //---------------------------------------------------------------------------
-  static std::vector<DisplayPtr> GetDisplayList();
+  static std::vector<PDisplay> GetDisplayList();
 
   //---------------------------------------------------------------------------
   // Returning a vector of supported modes for display
