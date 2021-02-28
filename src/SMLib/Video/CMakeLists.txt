@@ -8,6 +8,8 @@ set (SRC
     ${SOURCE_ROOT_DIR}/DisplayImpl.h
     ${HEADER_ROOT_DIR}/VideoMode.h
     ${SOURCE_ROOT_DIR}/VideoMode.cpp
+    ${HEADER_ROOT_DIR}/DisplayContainer.h
+    ${SOURCE_ROOT_DIR}/DisplayContainer.cpp
     )
 
 source_group("" FILES ${SRC})
