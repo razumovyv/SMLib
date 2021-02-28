@@ -6,9 +6,10 @@
 // Video module Headers
 //-----------------------------------------------------------------------------
 #include <SMLib/Video/Export.h>
-#include <SMLib/Video/Flags.h>
+#include <SMLib/Video/GeneralTypes.h>
 #include <SMLib/Video/VideoMode.h>
 #include <SMLib/Video/Display.h>
+#include <SMLib/Video/DisplayContainer.h>
 
 
 #endif // !SML_VIDEO_H_
