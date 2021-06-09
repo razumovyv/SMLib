@@ -29,6 +29,12 @@ DisplayContainer::operator[](uint32_t index)
 {
   return (PDisplay&)(displays_[index]);
 }
+
+const size_t
+DisplayContainer::Size() const
+{
+  return displays_.size();
+}
 } // namespace video
 } // namespace sml
 //------------------ End of file DIsplayContainer.cpp -------------------------
