@@ -16,6 +16,7 @@ public:
   static DisplayContainer& Create();
   const PDisplay& operator[](uint32_t index) const;
   PDisplay& operator[](uint32_t index);
+  const size_t Size() const;
 
 protected:
   DisplayContainer();
