@@ -2,12 +2,12 @@
 set(HEADER_ROOT_DIR ${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/System)
 set(SOURCE_ROOT_DIR ${PROJECT_SOURCE_DIR}/src/${PROJECT_NAME}/System)
 
-set (SRC
+set(SRC
     ${HEADER_ROOT_DIR}/NoneCopyable.h
     ${SOURCE_ROOT_DIR}/NoneCopyable.cpp
     ${HEADER_ROOT_DIR}/String.h
     ${SOURCE_ROOT_DIR}/String.cpp
-    )
+)
 
 source_group("" FILES ${SRC})
 
@@ -18,4 +18,3 @@ source_group("" FILES ${SRC})
 #endif()
 
 sml_add_Library(sml-system SOURCES ${SRC})
-

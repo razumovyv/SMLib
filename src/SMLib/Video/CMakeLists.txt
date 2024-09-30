@@ -2,7 +2,7 @@
 set(HEADER_ROOT_DIR ${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/Video)
 set(SOURCE_ROOT_DIR ${PROJECT_SOURCE_DIR}/src/${PROJECT_NAME}/Video)
 
-set (SRC 
+set(SRC
     ${HEADER_ROOT_DIR}/Display.h
     ${SOURCE_ROOT_DIR}/Display.cpp
     ${SOURCE_ROOT_DIR}/DisplayImpl.h
@@ -10,7 +10,7 @@ set (SRC
     ${SOURCE_ROOT_DIR}/VideoMode.cpp
     ${HEADER_ROOT_DIR}/DisplayContainer.h
     ${SOURCE_ROOT_DIR}/DisplayContainer.cpp
-    )
+)
 
 source_group("" FILES ${SRC})
 
@@ -23,4 +23,3 @@ endif()
 sml_add_Library(sml-video SOURCES ${SRC} ${PLATFORM_SRC})
 
 target_link_libraries(sml-video PUBLIC sml-system)
-
