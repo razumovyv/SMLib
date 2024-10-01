@@ -5,8 +5,8 @@ cmake_minimum_required(VERSION 3.19...3.20 FATAL_ERROR)
 
 # Set project name
 project(SMLib
-        DESCRIPTION "Simple Media Library"
-        LANGUAGES C CXX)
+    DESCRIPTION "Simple Media Library"
+    LANGUAGES C CXX)
 
 # Run the cmake config script
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/config.cmake)
@@ -18,11 +18,11 @@ set(PROJECT_VERSION_PATCH 0)
 set(PROJECT_VERSION_TWEAK 0)
 
 # Creating a version header file
-configure_file( ${PROJECT_SOURCE_DIR}/cmake/Version.h.in
-                ${PROJECT_ROOT_INCLUDE_DIR}/${PROJECT_NAME}/Version.h)
+configure_file(${PROJECT_SOURCE_DIR}/cmake/Version.h.in
+    ${PROJECT_ROOT_INCLUDE_DIR}/${PROJECT_NAME}/Version.h)
 
 set(SML_SOURCCE_ROOT_DIR ${PROJECT_SOURCE_DIR}/src/${PROJECT_NAME})
-set(SML_INSTALL_ROOT_DIR 
+set(SML_INSTALL_ROOT_DIR
     ${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}-${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})
 
 #For Debug
