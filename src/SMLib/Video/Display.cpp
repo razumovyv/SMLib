@@ -1,8 +1,6 @@
 //-------------------------- File Display.cpp ---------------------------------
 #include "DisplayImpl.h"
 #include <SMLib/Video/Display.h>
-#include <tuple>
-#include <iostream>
 
 namespace sml {
 namespace video {
